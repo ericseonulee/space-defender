@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5297537470636440713}
   - component: {fileID: 5297537470636440712}
   - component: {fileID: 5297537470636440719}
+  - component: {fileID: -5263844691807882008}
   m_Layer: 7
   m_Name: TinyUFOTypeBLeader
   m_TagString: Untagged
@@ -105,3 +106,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-5263844691807882008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297537470636440714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a6fec109bccb34e9efefdab15c1dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
