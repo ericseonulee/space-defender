@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Wave Config", fileName = "New Wave Config")]
 public class WaveConfigSO : ScriptableObject {
     [SerializeField] Transform pathPrefab;
-    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _moveSpeed = 10f;
 
     public Transform GetStartingWaypoint() {
         return pathPrefab.GetChild(0);
