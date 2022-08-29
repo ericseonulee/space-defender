@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 206925074}
   - component: {fileID: 206925076}
   - component: {fileID: 206925077}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 1261030643}
   - component: {fileID: 1261030645}
   - component: {fileID: 1261030646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1801134235}
   - component: {fileID: 1801134237}
   - component: {fileID: 1801134236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3576303267337611273}
   - component: {fileID: 652221089475284680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Astro Slug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 8277279648772850806}
   - component: {fileID: 292142091987364592}
   - component: {fileID: 1126388575468023474}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
