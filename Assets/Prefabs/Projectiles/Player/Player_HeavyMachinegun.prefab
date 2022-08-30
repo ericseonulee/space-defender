@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 863039500724591746}
   - component: {fileID: 4460829220387738237}
   - component: {fileID: 2711001436976459983}
+  - component: {fileID: -551283817520822189}
   m_Layer: 6
   m_Name: Player_HeavyMachinegun
   m_TagString: Untagged
@@ -137,3 +138,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.05, y: 0.2}
   m_Direction: 1
+--- !u!114 &-551283817520822189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775072632945526668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16e6a795e0d82b478c91e25f479b208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

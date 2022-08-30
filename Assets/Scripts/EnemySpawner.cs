@@ -4,17 +4,13 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
     [SerializeField] List<WaveConfigSO> waveConfigs;
-    [SerializeField] float timeBetweenWaves = 2f;
+    [SerializeField] float timeBetweenWaves = 4f;
     [SerializeField] bool isLooping;
     WaveConfigSO currentWave;
 
 
     void Start() {
         StartCoroutine(SpawnEnemyWaves());
-    }
-
-    void Update() {
-
     }
 
     public WaveConfigSO GetCurrentWave() {
@@ -30,7 +26,6 @@ public class EnemySpawner : MonoBehaviour {
 
     IEnumerator SpawnEnemyWaves() {
         do {
-            yield return new WaitForSeconds(timeBetweenWaves);
             foreach (WaveConfigSO wave in waveConfigs) {
                 currentWave = wave;
 
