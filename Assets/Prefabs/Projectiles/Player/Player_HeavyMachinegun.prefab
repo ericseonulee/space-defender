@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5635657610619254459}
-  - component: {fileID: -4596706897998383078}
   - component: {fileID: 863039500724591746}
   - component: {fileID: 4460829220387738237}
   - component: {fileID: 2711001436976459983}
+  - component: {fileID: -4596706897998383078}
   - component: {fileID: -551283817520822189}
   m_Layer: 6
   m_Name: Player_HeavyMachinegun
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-4596706897998383078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6775072632945526668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b02c850b3dd5e43adc4a2b0b672b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
 --- !u!212 &863039500724591746
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -138,6 +125,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1.05, y: 0.2}
   m_Direction: 1
+--- !u!114 &-4596706897998383078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775072632945526668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b02c850b3dd5e43adc4a2b0b672b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
 --- !u!114 &-551283817520822189
 MonoBehaviour:
   m_ObjectHideFlags: 0

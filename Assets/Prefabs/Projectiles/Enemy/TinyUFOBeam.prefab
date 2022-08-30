@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6422673925247417694}
   - component: {fileID: 517669538905727045}
   - component: {fileID: 2858821771131889959}
-  - component: {fileID: 3477050263129124648}
   - component: {fileID: -3763110849075168595}
+  - component: {fileID: 3477050263129124648}
   m_Layer: 7
   m_Name: TinyUFOBeam
   m_TagString: Untagged
@@ -146,18 +146,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3477050263129124648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803998601684192500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e16e6a795e0d82b478c91e25f479b208, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3763110849075168595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +159,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+--- !u!114 &3477050263129124648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803998601684192500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16e6a795e0d82b478c91e25f479b208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -130,8 +130,9 @@ public class Shooter : MonoBehaviour {
             Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
 
             if (rb != null) {
-                if (enemyType == EnemyType.TinyUFOTypeA || enemyType == EnemyType.TinyUFOTypeB) {
-                    Player player = FindObjectOfType<Player>();
+                Player player = FindObjectOfType<Player>();
+
+                if (player != null && (enemyType == EnemyType.TinyUFOTypeA || enemyType == EnemyType.TinyUFOTypeB)) {
                     Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
                     rb.velocity = (player.transform.position - instance.transform.position).normalized * tinyUFOProjectileSpeed;
