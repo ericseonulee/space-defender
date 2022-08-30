@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +17,8 @@ public class Player : MonoBehaviour {
     Vector2 minBounds;
     Vector2 maxBounds;
 
+    [SerializeField] Shooter shooter;
+
     void Start() {
         InitBounds();
     }
@@ -30,11 +33,18 @@ public class Player : MonoBehaviour {
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1));
     }
 
-    private void OnMove(InputValue value) {
+    void OnFire(InputValue value) {
+        if (shooter != null) {
+            shooter.isPlayerFiring = value.isPressed;
+            
+        }
+    }
+
+    void OnMove(InputValue value) {
         rawInput = value.Get<Vector2>();
     }
 
-    private void Move() {
+    void Move() {
         Vector2 delta = rawInput * moveSpeed * Time.deltaTime; // * Time.deltaTime make the movement framerate independent
         Vector2 newPos = new Vector2();
 
