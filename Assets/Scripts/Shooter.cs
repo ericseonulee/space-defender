@@ -23,6 +23,7 @@ public class Shooter : MonoBehaviour {
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
     [SerializeField] bool useAI;
     [SerializeField] EnemyType enemyType;
+    public bool isDead;
 
     public bool isFiring;
     private int positionIndex = 0;
@@ -31,13 +32,19 @@ public class Shooter : MonoBehaviour {
     float padding = 0.9f;
     Coroutine firingCoroutine;
     Animator shooterAnimator;
+    Health health;
 
     void Start() {
+        health = gameObject.transform.parent.gameObject.tag == "Enemy" ? gameObject.transform.parent.GetComponent<Health>() :
+                                                                        gameObject.transform.parent.parent.GetComponent<Health>();
         shooterAnimator = transform.GetComponent<Animator>();
 
         if (shooterAnimator == null) {
             Debug.Log("this object: " + gameObject.transform.parent.gameObject.name);
             Debug.LogError("Shooter Animator is null.");
+        }
+        if (health == null) {
+            Debug.LogError("Health is null");
         }
 
         if (useAI) {
@@ -75,7 +82,7 @@ public class Shooter : MonoBehaviour {
                 firingCoroutine = StartCoroutine(PlayerFireBasicAttack());
             }
         }
-        else if (!isFiring && firingCoroutine != null){
+        else if (!isFiring && firingCoroutine != null || health.IsDead()) {
             shooterAnimator.SetBool("isShooting", isFiring);
             StopCoroutine(firingCoroutine);
             firingCoroutine = null;
@@ -120,10 +127,15 @@ public class Shooter : MonoBehaviour {
     IEnumerator EnemyStartFiring(EnemyType enemyType) {
         Debug.Log(enemyType);
         while (isOnScreen() && useAI) {
-            shooterAnimator.SetBool("isShooting", true);
+            if (health.IsDead()) {
+                shooterAnimator.ResetTrigger("isShooting");
+            }
+            else {
+                shooterAnimator.SetTrigger("isShooting");
+            }
 
-            yield return new WaitForSeconds(0.7f);
-            shooterAnimator.SetBool("isShooting", false);
+            yield return new WaitForSeconds(0.8f * Time.deltaTime);
+            shooterAnimator.ResetTrigger("isShooting");
             GameObject instance = Instantiate(projectilePrefab,
                                               transform.position,
                                               projectilePrefab.transform.rotation);
@@ -141,7 +153,7 @@ public class Shooter : MonoBehaviour {
                     rb.velocity = -transform.up * tinyUFOProjectileSpeed;
                 }
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
         }
     }
 }
