@@ -41,7 +41,6 @@ public class Shooter : MonoBehaviour {
         shooterAnimator = transform.GetComponent<Animator>();
 
         if (shooterAnimator == null) {
-            Debug.Log("this object: " + gameObject.transform.parent.gameObject.name);
             Debug.LogError("Shooter Animator is null.");
         }
         if (health == null) {

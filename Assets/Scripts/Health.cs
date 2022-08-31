@@ -27,8 +27,6 @@ public class Health : MonoBehaviour {
     void TakeDamage(int damageDealt) {
         health -= damageDealt;
         if (health <= 0) {
-            Debug.Log("GameObject name: " + gameObject.name);
-            Debug.Log("GameObject tag: " + gameObject.tag);
             if (gameObject.tag == "Enemy") {
                 animator.SetTrigger("OnDeath");
                 isDead = true;
