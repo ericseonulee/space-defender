@@ -5,7 +5,8 @@ using TMPro;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour {
-    enum EnemyType {
+    enum ShooterType {
+        Player,
         UFO,
         MiniUFO,
         TinyUFOTypeA,
@@ -22,7 +23,7 @@ public class Shooter : MonoBehaviour {
     [Header("Enemy Variables")]
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
     [SerializeField] bool useAI;
-    [SerializeField] EnemyType enemyType;
+    [SerializeField] ShooterType shooterType;
     [SerializeField] float timeToNextProjectile = 4f;
     public bool isDead;
 
@@ -73,23 +74,22 @@ public class Shooter : MonoBehaviour {
     }
 
     void EnemyFire() {
-        if (useAI) {
-            switch (enemyType) {
-                case EnemyType.UFO:
-                    break;
-                case EnemyType.MiniUFO:
+        switch (shooterType) {
+            case ShooterType.Player:
+                break;
+            case ShooterType.UFO:
+                break;
+            case ShooterType.MiniUFO:
 
-                    break;
-                case EnemyType.TinyUFOTypeA:
-                    StartCoroutine(EnemyStartCharging());
-                    break;
-                case EnemyType.TinyUFOTypeB:
-                    break;
+                break;
+            case ShooterType.TinyUFOTypeA:
+                StartCoroutine(EnemyStartCharging());
+                break;
+            case ShooterType.TinyUFOTypeB:
+                break;
 
-                default:
-                    break;
-            }
-
+            default:
+                break;
         }
     }
 
@@ -152,7 +152,7 @@ public class Shooter : MonoBehaviour {
         if (rb != null) {
             Player player = FindObjectOfType<Player>();
 
-            if (player != null && (enemyType == EnemyType.TinyUFOTypeA || enemyType == EnemyType.TinyUFOTypeB)) {
+            if (player != null && (shooterType == ShooterType.TinyUFOTypeA || shooterType == ShooterType.TinyUFOTypeB)) {
                 Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
                 rb.velocity = (player.transform.position - instance.transform.position).normalized * tinyUFOProjectileSpeed;
