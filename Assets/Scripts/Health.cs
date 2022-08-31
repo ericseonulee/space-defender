@@ -6,12 +6,19 @@ public class Health : MonoBehaviour {
     [SerializeField] int health = 50;
     [SerializeField] bool isDead;
     Animator animator;
-    
+
+    [SerializeField] bool applyCameraShake;
+    CameraShake cameraShake;
+
     void Awake() {
         animator = gameObject.GetComponent<Animator>();
+        cameraShake = Camera.main.GetComponent<CameraShake>();
 
         if (gameObject.tag == "Enemy" && animator == null) {
             Debug.LogError("Animator is null");
+        }
+        if (cameraShake == null) {
+            Debug.LogError("CameraShake is null.");
         }
     }
 
@@ -20,6 +27,7 @@ public class Health : MonoBehaviour {
 
         if (damageDealer != null) {
             TakeDamage(damageDealer.GetDamage());
+            ShakeCamera();
             damageDealer.Hit(gameObject);
         }
     }
@@ -40,5 +48,11 @@ public class Health : MonoBehaviour {
 
     public bool IsDead() {
         return isDead;
+    }
+
+    public void ShakeCamera() {
+        if (cameraShake != null && applyCameraShake) {
+            cameraShake.Play();
+        }
     }
 }

@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 60
   isDead: 0
+  applyCameraShake: 0
 --- !u!50 &2515928009682434679
 Rigidbody2D:
   serializedVersion: 4
@@ -222,7 +223,7 @@ GameObject:
   - component: {fileID: 7987295322077930921}
   m_Layer: 7
   m_Name: Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,7 +312,7 @@ MonoBehaviour:
   playerBasicAttackSpeed: 20
   tinyUFOProjectileSpeed: 5
   useAI: 1
-  enemyType: 2
+  shooterType: 3
   timeToNextProjectile: 3
   isDead: 0
   isFiring: 0
