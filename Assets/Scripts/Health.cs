@@ -27,6 +27,9 @@ public class Health : MonoBehaviour {
     void TakeDamage(int damageDealt) {
         health -= damageDealt;
         if (health <= 0) {
+            Collider2D collider = GetComponent<Collider2D>();
+
+            collider.enabled = false;
             if (gameObject.tag == "Enemy") {
                 animator.SetTrigger("OnDeath");
                 isDead = true;
