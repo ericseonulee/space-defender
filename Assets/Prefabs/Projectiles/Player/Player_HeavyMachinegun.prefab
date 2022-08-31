@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4596706897998383078}
   - component: {fileID: -551283817520822189}
   - component: {fileID: 5338615389645831158}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player_HeavyMachinegun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

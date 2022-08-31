@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2858821771131889959}
   - component: {fileID: -3763110849075168595}
   - component: {fileID: 3477050263129124648}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: TinyUFOBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
