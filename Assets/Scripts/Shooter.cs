@@ -56,7 +56,9 @@ public class Shooter : MonoBehaviour {
     }
 
     void Update() {
-        PlayerFire();
+        if (!useAI) {
+            PlayerFire();
+        }
     }
 
     void PlayerFire() {
