@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6157939868945845168}
   - component: {fileID: -9201998305531404606}
   - component: {fileID: 6941629994344071035}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: UFO
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  isDead: 0
+  applyCameraShake: 0
 --- !u!50 &-9201998305531404606
 Rigidbody2D:
   serializedVersion: 4
@@ -190,3 +192,4 @@ PolygonCollider2D:
       - {x: 0.8833334, y: -0.16492164}
       - {x: 0.748566, y: -0.033333335}
       - {x: 0.51135373, y: 0.067172065}
+  m_UseDelaunayMesh: 0

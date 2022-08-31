@@ -21,6 +21,11 @@ public class Player : MonoBehaviour {
 
     void Start() {
         InitBounds();
+        playerRigidbody = GetComponent<Rigidbody2D>();
+
+        if (playerRigidbody == null) {
+            Debug.LogError("playerRigidBody is null.");
+        }
     }
 
     void Update() {
@@ -45,12 +50,33 @@ public class Player : MonoBehaviour {
     }
 
     void Move() {
-        Vector2 delta = rawInput * moveSpeed * Time.deltaTime; // * Time.deltaTime make the movement framerate independent
+        Vector2 playerVelocity = new Vector2(rawInput.x * moveSpeed, rawInput.y * moveSpeed);// * Time.deltaTime;
+        playerRigidbody.velocity = playerVelocity;
+
         Vector2 newPos = new Vector2();
 
-        newPos.x = Mathf.Clamp(transform.position.x + delta.x, minBounds.x + paddingLeft, maxBounds.x - paddingRight);
-        newPos.y = Mathf.Clamp(transform.position.y + delta.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
+        newPos.x = Mathf.Clamp(transform.position.x, minBounds.x + paddingLeft, maxBounds.x - paddingRight);
+        newPos.y = Mathf.Clamp(transform.position.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
 
         transform.position = newPos;
+    }
+
+    /**
+     * Returns 1 if moving right, -1 if moving left, 0 if not moving
+     */
+    public int PlayerMovingHorizontal() {
+        if (Mathf.Abs(playerRigidbody.velocity.x) > Mathf.Epsilon) {
+
+            if (playerRigidbody.velocity.x > 0) {
+                return 1;
+            }
+            else {
+                return -1;
+            }
+        }
+        else {
+            return 0;
+        }
+
     }
 }

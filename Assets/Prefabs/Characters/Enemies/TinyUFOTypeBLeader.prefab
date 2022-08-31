@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5263844691807882008}
   - component: {fileID: 6904397112221041176}
   - component: {fileID: 1806662133226262443}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: TinyUFOTypeBLeader
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -121,6 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
+  isDead: 0
+  applyCameraShake: 0
 --- !u!50 &6904397112221041176
 Rigidbody2D:
   serializedVersion: 4
@@ -184,3 +186,4 @@ PolygonCollider2D:
       - {x: 0.581851, y: -0.064480394}
       - {x: 0.5823432, y: 0.100822985}
       - {x: 0.4845848, y: 0.3323065}
+  m_UseDelaunayMesh: 0

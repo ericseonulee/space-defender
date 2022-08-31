@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8380481456935941649}
   - component: {fileID: 6938752267314939603}
   - component: {fileID: 7347588069970190900}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: TinyUFOTypeA
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 8516669098087232741}
   - component: {fileID: 4088808201501651594}
   - component: {fileID: 127368746316950399}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -313,7 +313,6 @@ MonoBehaviour:
   tinyUFOProjectileSpeed: 5
   useAI: 1
   shooterType: 3
-  timeToNextProjectile: 3
   isDead: 0
   isFiring: 0
 --- !u!95 &127368746316950399
