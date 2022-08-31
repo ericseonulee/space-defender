@@ -9,13 +9,33 @@ public class DamageDealer : MonoBehaviour {
         return damage;
     }
 
-    public void Hit(string tag) {
-        if (tag == "Enemy") {
+    public void Hit(GameObject target) {
+        if (target.tag == "Enemy") {
             CapsuleCollider2D collider = GetComponent<CapsuleCollider2D>();
+            Rigidbody2D rigidBody2D = GetComponent<Rigidbody2D>();
+            SpriteRenderer spriteRenderer = target.GetComponent<SpriteRenderer>();
+
             if (collider != null) {
                 collider.enabled = false;
-                RandomBasicAttackHitAnimator();
             }
+            if (rigidBody2D != null) {
+                rigidBody2D.velocity = Vector3.zero;
+            }
+
+            // Positioning the projectile within the sprite so it will look natural.
+            if (spriteRenderer != null) {
+                float spriteHeightInUnityUnit = spriteRenderer.sprite.rect.height / 30f; // Pixel per unit is 30.
+                float midPointYStart;
+                float midPointYEnd;
+
+                midPointYStart = spriteHeightInUnityUnit / 4 * 2;
+                midPointYEnd = spriteHeightInUnityUnit / 4 * 3;
+
+                gameObject.transform.position = new Vector2(transform.position.x,
+                                                            transform.position.y
+                                                                + Random.Range(midPointYStart, midPointYEnd + Mathf.Epsilon));
+            }
+            RandomBasicAttackHitAnimator();
         }
         else {
             Destroy(gameObject);

@@ -67,7 +67,7 @@ public class Shooter : MonoBehaviour {
         else if (!isFiring && firingCoroutine != null || health.IsDead()) {
             shooterAnimator.SetBool("isShooting", isFiring);
             StopCoroutine(firingCoroutine);
-            //firingCoroutine = null;
+            firingCoroutine = null;
         }
     }
 
