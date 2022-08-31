@@ -134,7 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a6fec109bccb34e9efefdab15c1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 60
+  isDead: 0
 --- !u!50 &2515928009682434679
 Rigidbody2D:
   serializedVersion: 4
@@ -206,6 +207,7 @@ PolygonCollider2D:
       - {x: 0.23417471, y: 0.033200964}
       - {x: 0.13357562, y: 0.13478185}
       - {x: 0.002129361, y: 0.19964054}
+  m_UseDelaunayMesh: 0
 --- !u!1 &2945722774351523797
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +312,8 @@ MonoBehaviour:
   tinyUFOProjectileSpeed: 5
   useAI: 1
   enemyType: 2
+  timeToNextProjectile: 3
+  isDead: 0
   isFiring: 0
 --- !u!95 &7987295322077930921
 Animator:
