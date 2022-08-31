@@ -23,7 +23,9 @@ public class Shooter : MonoBehaviour {
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
     [SerializeField] bool useAI;
     [SerializeField] EnemyType enemyType;
+    [SerializeField] float timeToNextProjectile = 4f;
     public bool isDead;
+    bool isShootingAnimEnded;
 
     public bool isFiring;
     private int positionIndex = 0;
@@ -50,42 +52,44 @@ public class Shooter : MonoBehaviour {
         if (useAI) {
             isFiring = true;
             InitBounds();
+            EnemyFire();
         }
     }
 
     void Update() {
-        Fire();
+        PlayerFire();
     }
 
-    void Fire() {
-        if (isFiring && firingCoroutine == null) {
-            if (useAI) {
-                switch (enemyType) {
-                    case EnemyType.UFO:
-                        break;
-                    case EnemyType.MiniUFO:
-
-                        break;
-                    case EnemyType.TinyUFOTypeA:
-                        firingCoroutine = StartCoroutine(EnemyStartFiring(enemyType));
-                        break;
-                    case EnemyType.TinyUFOTypeB:
-                        break;
-
-                    default:
-                        break;
-                }
-
-            }
-            else {
-                shooterAnimator.SetBool("isShooting", isFiring);
-                firingCoroutine = StartCoroutine(PlayerFireBasicAttack());
-            }
+    void PlayerFire() {
+        if (isFiring && firingCoroutine == null && !health.IsDead()) {
+            shooterAnimator.SetBool("isShooting", isFiring);
+            firingCoroutine = StartCoroutine(PlayerFireBasicAttack());
         }
         else if (!isFiring && firingCoroutine != null || health.IsDead()) {
             shooterAnimator.SetBool("isShooting", isFiring);
             StopCoroutine(firingCoroutine);
             firingCoroutine = null;
+        }
+    }
+
+    void EnemyFire() {
+        if (useAI) {
+            switch (enemyType) {
+                case EnemyType.UFO:
+                    break;
+                case EnemyType.MiniUFO:
+
+                    break;
+                case EnemyType.TinyUFOTypeA:
+                    StartCoroutine(EnemyStartCharging());
+                    break;
+                case EnemyType.TinyUFOTypeB:
+                    break;
+
+                default:
+                    break;
+            }
+
         }
     }
 
@@ -124,36 +128,36 @@ public class Shooter : MonoBehaviour {
         }
     }
 
-    IEnumerator EnemyStartFiring(EnemyType enemyType) {
-        Debug.Log(enemyType);
-        while (isOnScreen() && useAI) {
+    IEnumerator EnemyStartCharging() {
+        if (isOnScreen() && useAI) {
             if (health.IsDead()) {
                 shooterAnimator.ResetTrigger("isShooting");
+                yield return null;
+            }
+            
+            shooterAnimator.SetTrigger("isShooting");
+            yield return new WaitForSeconds(timeToNextProjectile);
+        }
+    }
+
+    // Animation Event will call this function at the end of enemy charging animation.
+    public void EnemyReadyToShoot() {
+        GameObject instance = Instantiate(projectilePrefab,
+                                          transform.position,
+                                          projectilePrefab.transform.rotation);
+        Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
+
+        if (rb != null) {
+            Player player = FindObjectOfType<Player>();
+
+            if (player != null && (enemyType == EnemyType.TinyUFOTypeA || enemyType == EnemyType.TinyUFOTypeB)) {
+                Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
+                rb.velocity = (player.transform.position - instance.transform.position).normalized * tinyUFOProjectileSpeed;
             }
             else {
-                shooterAnimator.SetTrigger("isShooting");
+                rb.velocity = -transform.up * tinyUFOProjectileSpeed;
             }
-
-            yield return new WaitForSeconds(0.8f * Time.deltaTime);
-            shooterAnimator.ResetTrigger("isShooting");
-            GameObject instance = Instantiate(projectilePrefab,
-                                              transform.position,
-                                              projectilePrefab.transform.rotation);
-            Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
-
-            if (rb != null) {
-                Player player = FindObjectOfType<Player>();
-
-                if (player != null && (enemyType == EnemyType.TinyUFOTypeA || enemyType == EnemyType.TinyUFOTypeB)) {
-                    Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-
-                    rb.velocity = (player.transform.position - instance.transform.position).normalized * tinyUFOProjectileSpeed;
-                }
-                else {
-                    rb.velocity = -transform.up * tinyUFOProjectileSpeed;
-                }
-            }
-            yield return new WaitForSeconds(3);
         }
     }
 }
