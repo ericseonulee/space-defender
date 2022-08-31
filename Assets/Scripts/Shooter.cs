@@ -24,7 +24,7 @@ public class Shooter : MonoBehaviour {
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
     [SerializeField] bool useAI;
     [SerializeField] ShooterType shooterType;
-    [SerializeField] float timeToNextProjectile = 4f;
+    float timeToNextProjectile = 4f;
     public bool isDead;
 
     public bool isFiring;
@@ -51,7 +51,7 @@ public class Shooter : MonoBehaviour {
         if (useAI) {
             isFiring = true;
             InitBounds();
-            EnemyFire();
+            InvokeRepeating("EnemyFire", 0f, timeToNextProjectile);
         }
     }
 
@@ -129,14 +129,16 @@ public class Shooter : MonoBehaviour {
     }
 
     IEnumerator EnemyStartCharging() {
-        if (isOnScreen() && useAI) {
+        while (!isOnScreen()) {
+            yield return new WaitForEndOfFrame();
+        }
+        if (isOnScreen()) {
             if (health.IsDead()) {
                 shooterAnimator.ResetTrigger("isShooting");
                 yield return null;
             }
             
             shooterAnimator.SetTrigger("isShooting");
-            yield return new WaitForSeconds(timeToNextProjectile);
         }
     }
 
