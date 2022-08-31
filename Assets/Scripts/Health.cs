@@ -20,7 +20,7 @@ public class Health : MonoBehaviour {
 
         if (damageDealer != null) {
             TakeDamage(damageDealer.GetDamage());
-            damageDealer.Hit();
+            damageDealer.Hit(gameObject.tag);
         }
     }
 

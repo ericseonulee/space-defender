@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2711001436976459983}
   - component: {fileID: -4596706897998383078}
   - component: {fileID: -551283817520822189}
+  - component: {fileID: 5338615389645831158}
   m_Layer: 6
   m_Name: Player_HeavyMachinegun
   m_TagString: Untagged
@@ -150,3 +151,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e16e6a795e0d82b478c91e25f479b208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5338615389645831158
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6775072632945526668}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9ec7a1b5c2f488b4e88272e8284924e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

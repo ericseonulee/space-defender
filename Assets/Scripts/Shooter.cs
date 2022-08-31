@@ -67,7 +67,7 @@ public class Shooter : MonoBehaviour {
         else if (!isFiring && firingCoroutine != null || health.IsDead()) {
             shooterAnimator.SetBool("isShooting", isFiring);
             StopCoroutine(firingCoroutine);
-            firingCoroutine = null;
+            //firingCoroutine = null;
         }
     }
 
@@ -139,7 +139,9 @@ public class Shooter : MonoBehaviour {
         }
     }
 
-    // Animation Event will call this function at the end of enemy charging animation.
+    /**
+     * Animation Event will call this function at the end of enemy charging animation.
+     */
     public void EnemyReadyToShoot() {
         GameObject instance = Instantiate(projectilePrefab,
                                           transform.position,
