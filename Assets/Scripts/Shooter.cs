@@ -25,7 +25,6 @@ public class Shooter : MonoBehaviour {
     [SerializeField] EnemyType enemyType;
     [SerializeField] float timeToNextProjectile = 4f;
     public bool isDead;
-    bool isShootingAnimEnded;
 
     public bool isFiring;
     private int positionIndex = 0;
