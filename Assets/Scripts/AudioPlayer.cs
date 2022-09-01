@@ -10,8 +10,8 @@ public class AudioPlayer : MonoBehaviour {
     [SerializeField] public float audioReplayDelay;
     AudioSource source { get { return GetComponent<AudioSource>(); } }
     static AudioPlayer instance;
-    static float audioOffset = 0.05313187f;
-    static float shootingEndOffset = 0.5f;
+    static float audioOffset = 0.78547253f;
+    static float shootingEndOffset = 1.23234066f;
 
     void Awake() {
         ManageSingleton();

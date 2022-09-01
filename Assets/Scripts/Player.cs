@@ -47,7 +47,6 @@ public class Player : MonoBehaviour {
         else if (Input.GetKeyUp(KeyCode.Space)) {
             Debug.Log("Shooting End");
             StopCoroutine(playAudio());
-            //audioPlayer.StopPlaying();
             audioPlayer.PlayShootingEnd();
         }
     }
