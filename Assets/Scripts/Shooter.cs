@@ -109,13 +109,13 @@ public class Shooter : MonoBehaviour {
 
     IEnumerator PlayerFireBasicAttack() {
         while (!useAI) {
-            float HorizontalOffset = 1.5f;
+            float verticalOffset = 1f;
             int rounds = 4;
-            float roundSpeed = 0.025f;
+            float roundSpeed = 0.03f;
 
             while (rounds --> 0) {
-                Vector3 firePosition = new Vector3(transform.position.x + GetPlayerBasicAttackVerticalOffset(),
-                                                   transform.position.y + HorizontalOffset,
+                Vector3 firePosition = new Vector3(transform.position.x + GetPlayerBasicAttackHorizontalOffset(),
+                                                   transform.position.y + verticalOffset,
                                                    transform.position.z);
 
                 InstantiatePlayerBasicAttack(firePosition);
@@ -128,7 +128,7 @@ public class Shooter : MonoBehaviour {
     /**
      * Returns 3 different x position offset for basic attack starting point in rotation of 3 positions.
      */
-    float GetPlayerBasicAttackVerticalOffset() {
+    float GetPlayerBasicAttackHorizontalOffset() {
         float[] positionOffsets = { -0.15f, 0f, 0.2f };
         
         if (playerBasicAttackOffsetIndex > 2) {
