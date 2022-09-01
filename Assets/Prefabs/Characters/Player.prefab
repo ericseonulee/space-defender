@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6775072632945526668, guid: 6535b7667654d8c4d8acbd0e11aa9c1a, type: 3}
-  playerFireRate: 0.2
+  playerFireRate: 0.05
   playerBasicAttackSpeed: 20
   tinyUFOProjectileSpeed: 5
   useAI: 0
@@ -953,7 +953,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7500594777235747844}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

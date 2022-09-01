@@ -18,6 +18,15 @@ public class Player : MonoBehaviour {
     Vector2 maxBounds;
 
     [SerializeField] Shooter shooter;
+    AudioPlayer audioPlayer;
+
+    void Awake() {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+
+        if (audioPlayer == null) {
+            Debug.LogError("audioPlayer is null.");
+        }
+    }
 
     void Start() {
         InitBounds();
@@ -30,6 +39,17 @@ public class Player : MonoBehaviour {
 
     void Update() {
         Move();
+
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log("Shooting");
+            StartCoroutine(playAudio());
+        }
+        else if (Input.GetKeyUp(KeyCode.Space)) {
+            Debug.Log("Shooting End");
+            StopCoroutine(playAudio());
+            //audioPlayer.StopPlaying();
+            audioPlayer.PlayShootingEnd();
+        }
     }
 
     void InitBounds() {
@@ -41,7 +61,6 @@ public class Player : MonoBehaviour {
     void OnFire(InputValue value) {
         if (shooter != null) {
             shooter.isFiring = value.isPressed;
-            
         }
     }
 
@@ -78,5 +97,19 @@ public class Player : MonoBehaviour {
             return 0;
         }
 
+    }
+
+    IEnumerator playAudio() {
+        if (!audioPlayer.IsPlaying()) {
+            audioPlayer.PlayShootingClip();
+            yield return null;
+        }
+
+        while (shooter.isFiring) {
+            yield return new WaitForSeconds(audioPlayer.audioReplayDelay);
+            if (!shooter.isFiring) break;
+
+            audioPlayer.PlayShootingClip();
+        }
     }
 }
