@@ -10,6 +10,11 @@ public class Health : MonoBehaviour {
     [SerializeField] bool applyCameraShake;
     CameraShake cameraShake;
 
+    [Header("Enemy Hit")]
+    [SerializeField] AudioClip enemyHitClip;
+    [SerializeField][Range(0f, 1f)] float volume = 0.05f;
+    AudioSource source { get { return GetComponent<AudioSource>(); } }
+
     void Awake() {
         animator = gameObject.GetComponent<Animator>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
@@ -22,6 +27,21 @@ public class Health : MonoBehaviour {
         }
     }
 
+    void Start() {
+        AddAudioSource();
+    }
+
+    void Update() {
+        if (source != null) {
+            source.volume = volume;
+        }
+    }
+    void AddAudioSource() {
+        gameObject.AddComponent<AudioSource>();
+        source.clip = enemyHitClip;
+        source.playOnAwake = false;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
 
@@ -29,6 +49,7 @@ public class Health : MonoBehaviour {
             TakeDamage(damageDealer.GetDamage());
             ShakeCamera();
             damageDealer.Hit(gameObject);
+            source.PlayOneShot(enemyHitClip, volume);
         }
     }
 

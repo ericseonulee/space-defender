@@ -510,6 +510,18 @@ PrefabInstance:
       propertyPath: health
       value: 999999
       objectReference: {fileID: 0}
+    - target: {fileID: -6157939868945845168, guid: 738130d31b093d34f811025b9648bad8, type: 3}
+      propertyPath: volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6157939868945845168, guid: 738130d31b093d34f811025b9648bad8, type: 3}
+      propertyPath: enemyHitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: eb52f2b06d7c3254f8b3054a58728752, type: 3}
+    - target: {fileID: -6157939868945845168, guid: 738130d31b093d34f811025b9648bad8, type: 3}
+      propertyPath: audioReplayDelay
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6916354786877703980, guid: 738130d31b093d34f811025b9648bad8, type: 3}
       propertyPath: m_RootOrder
       value: 5
