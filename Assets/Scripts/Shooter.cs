@@ -17,7 +17,7 @@ public class Shooter : MonoBehaviour {
     [SerializeField] GameObject projectilePrefab;
 
     [Header("Player Variables")]
-    [SerializeField] float playerFireRate = 0.2f;
+    [SerializeField] float playerFireRate = 0.01f;
     [SerializeField] float playerBasicAttackSpeed = 20f;
     
     [Header("Enemy Variables")]
@@ -28,7 +28,7 @@ public class Shooter : MonoBehaviour {
     public bool isDead;
 
     public bool isFiring;
-    private int positionIndex = 0;
+    private int playerBasicAttackOffsetIndex = 0;
     Vector2 minBounds;
     Vector2 maxBounds;
     float padding = 0.9f;
@@ -109,22 +109,44 @@ public class Shooter : MonoBehaviour {
 
     IEnumerator PlayerFireBasicAttack() {
         while (!useAI) {
-            float[] positionOffsets = { -0.15f, 0f, 0.2f };
+            float HorizontalOffset = 1.5f;
+            int rounds = 4;
+            float roundSpeed = 0.025f;
 
-            if (positionIndex > 2) { positionIndex = 0; }
-            
-            Vector3 firePosition = new Vector3(transform.position.x + positionOffsets[positionIndex++],
-                                               transform.position.y + 1.5f,
-                                               transform.position.z);
-            GameObject instance = Instantiate(projectilePrefab,
+            while (rounds --> 0) {
+                Vector3 firePosition = new Vector3(transform.position.x + GetPlayerBasicAttackVerticalOffset(),
+                                                   transform.position.y + HorizontalOffset,
+                                                   transform.position.z);
+
+                InstantiatePlayerBasicAttack(firePosition);
+                yield return new WaitForSeconds(roundSpeed);
+            }
+            yield return new WaitForSeconds(playerFireRate);
+        }
+    }
+
+    /**
+     * Returns 3 different x position offset for basic attack starting point in rotation of 3 positions.
+     */
+    float GetPlayerBasicAttackVerticalOffset() {
+        float[] positionOffsets = { -0.15f, 0f, 0.2f };
+        
+        if (playerBasicAttackOffsetIndex > 2) {
+            playerBasicAttackOffsetIndex = 0;
+        }
+
+        return positionOffsets[playerBasicAttackOffsetIndex++];
+    }
+
+    void InstantiatePlayerBasicAttack(Vector3 firePosition) {
+        GameObject instance = Instantiate(projectilePrefab,
                                               firePosition,
                                               projectilePrefab.transform.rotation);
-            Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
 
-            if (rb != null) {
-                rb.velocity = transform.up * playerBasicAttackSpeed;
-            }
-            yield return new WaitForSeconds(playerFireRate / 4);
+        Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
+
+        if (rb != null) {
+            rb.velocity = transform.up * playerBasicAttackSpeed;
         }
     }
 
