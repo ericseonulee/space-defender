@@ -5,6 +5,27 @@ using UnityEngine;
 public class DamageDealer : MonoBehaviour {
     [SerializeField] int damage = 10;
 
+    [Header("Ricochet")]
+    [SerializeField] AudioClip ricochetClip;
+    [SerializeField][Range(0f, 1f)] float volume = 0.1f;
+    AudioSource source { get { return GetComponent<AudioSource>(); } }
+
+    void Start() {
+        AddAudioSource();
+    }
+
+    void Update() {
+        if (source != null) {
+            source.volume = volume;
+        }
+    }
+
+    void AddAudioSource() {
+        gameObject.AddComponent<AudioSource>();
+        source.clip = ricochetClip;
+        source.playOnAwake = false;
+    }
+
     public int GetDamage() {
         return damage;
     }
@@ -36,6 +57,7 @@ public class DamageDealer : MonoBehaviour {
                                                                 + Random.Range(midPointYStart, midPointYEnd + Mathf.Epsilon));
             }
             RandomBasicAttackHitAnimator();
+            source.PlayOneShot(ricochetClip, volume);
         }
         else {
             Destroy(gameObject);

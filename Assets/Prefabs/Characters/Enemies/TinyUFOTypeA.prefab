@@ -137,6 +137,12 @@ MonoBehaviour:
   health: 40
   isDead: 0
   applyCameraShake: 0
+  enemyHitClip: {fileID: 8300000, guid: eb52f2b06d7c3254f8b3054a58728752, type: 3}
+  UFOExplosion: {fileID: 8300000, guid: 43a53aec0b19e4f4a9e8179b729264f5, type: 3}
+  miniUFOExplosion: {fileID: 8300000, guid: d17c2abe55b8c8c48b8d35fbe52be21d, type: 3}
+  tinyUFOExplosion: {fileID: 8300000, guid: 998de226ad0d45744b5818d6a4fdb3e6, type: 3}
+  smallExplosion: {fileID: 8300000, guid: f7175d104cee3df44acacba2211e856c, type: 3}
+  volume: 0.05
 --- !u!50 &6938752267314939603
 Rigidbody2D:
   serializedVersion: 4

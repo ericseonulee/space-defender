@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5338615389645831158}
   m_Layer: 7
   m_Name: Player_HeavyMachinegun
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -139,6 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  ricochetClip: {fileID: 8300000, guid: a341e75a0f92ca3489c94be0c5322441, type: 3}
+  volume: 0.2
 --- !u!114 &-551283817520822189
 MonoBehaviour:
   m_ObjectHideFlags: 0

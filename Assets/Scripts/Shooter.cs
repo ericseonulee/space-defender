@@ -61,6 +61,10 @@ public class Shooter : MonoBehaviour {
         }
     }
 
+    public string GetShooterType() {
+        return shooterType.ToString();
+    }
+
     void PlayerFire() {
         if (isFiring && firingCoroutine == null && !health.IsDead()) {
             shooterAnimator.SetBool("isShooting", isFiring);
