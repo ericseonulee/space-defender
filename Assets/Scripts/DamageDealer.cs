@@ -9,6 +9,11 @@ public class DamageDealer : MonoBehaviour {
     [SerializeField] AudioClip ricochetClip;
     [SerializeField][Range(0f, 1f)] float volume = 0.15f;
     AudioSource source { get { return GetComponent<AudioSource>(); } }
+    ScoreKeeper scoreKeeper;
+
+    void Awake() {
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+    }
 
     void Start() {
         AddAudioSource();
@@ -56,6 +61,7 @@ public class DamageDealer : MonoBehaviour {
                                                             transform.position.y
                                                                 + Random.Range(midPointYStart, midPointYEnd + Mathf.Epsilon));
             }
+            scoreKeeper.ModityScore(100);
             RandomBasicAttackHitAnimator();
             source.PlayOneShot(ricochetClip, volume);
         }

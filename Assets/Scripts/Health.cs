@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour {
+    [SerializeField] bool isPlayer;
     [SerializeField] int health = 50;
     [SerializeField] bool isDead;
     Animator animator;
@@ -36,10 +37,6 @@ public class Health : MonoBehaviour {
             source.volume = volume;
         }
     }
-    void AddAudioSource() {
-        gameObject.AddComponent<AudioSource>();
-        source.playOnAwake = false;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
@@ -49,6 +46,11 @@ public class Health : MonoBehaviour {
             ShakeCamera();
             damageDealer.Hit(gameObject);
         }
+    }
+
+    void AddAudioSource() {
+        gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
     }
 
     void TakeDamage(int damageDealt) {
@@ -75,5 +77,9 @@ public class Health : MonoBehaviour {
         if (cameraShake != null && applyCameraShake) {
             cameraShake.Play();
         }
+    }
+
+    public int GetHealth() {
+        return health;
     }
 }
