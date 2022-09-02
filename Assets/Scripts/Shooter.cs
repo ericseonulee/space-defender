@@ -19,6 +19,7 @@ public class Shooter : MonoBehaviour {
     [Header("Player Variables")]
     [SerializeField] float playerFireRate = 0.01f;
     [SerializeField] float playerBasicAttackSpeed = 20f;
+    [SerializeField] float roundSpeed = 0.0625f;
     
     [Header("Enemy Variables")]
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
@@ -115,7 +116,6 @@ public class Shooter : MonoBehaviour {
         while (!useAI) {
             float verticalOffset = 1f;
             int rounds = 4;
-            float roundSpeed = 0.03f;
 
             while (rounds --> 0) {
                 Vector3 firePosition = new Vector3(transform.position.x + GetPlayerBasicAttackHorizontalOffset(),

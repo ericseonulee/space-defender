@@ -11,7 +11,6 @@ public class Health : MonoBehaviour {
     CameraShake cameraShake;
 
     [Header("Enemy")]
-    [SerializeField] AudioClip enemyHitClip;
     [SerializeField] AudioClip UFOExplosion;
     [SerializeField] AudioClip miniUFOExplosion;
     [SerializeField] AudioClip tinyUFOExplosion;
@@ -42,7 +41,6 @@ public class Health : MonoBehaviour {
     }
     void AddAudioSource() {
         gameObject.AddComponent<AudioSource>();
-        source.clip = enemyHitClip;
         source.playOnAwake = false;
     }
 
@@ -53,7 +51,6 @@ public class Health : MonoBehaviour {
             TakeDamage(damageDealer.GetDamage());
             ShakeCamera();
             damageDealer.Hit(gameObject);
-            source.PlayOneShot(enemyHitClip, volume);
         }
     }
 

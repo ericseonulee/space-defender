@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
 
     [Header("Shooting Audio")]
     [SerializeField] AudioClip shootingClip;
-    [SerializeField][Range(0f, 1f)] float shootingVolume = 1f;
+    [SerializeField][Range(0f, 1f)] float shootingVolume = 0.15f;
     [SerializeField] public float audioReplayDelay;
     AudioSource source { get { return GetComponent<AudioSource>(); } }
     static AudioPlayer instance;

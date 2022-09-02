@@ -224,8 +224,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6775072632945526668, guid: 6535b7667654d8c4d8acbd0e11aa9c1a, type: 3}
-  playerFireRate: 0.05
+  playerFireRate: 0.01
   playerBasicAttackSpeed: 20
+  roundSpeed: 0.0625
   tinyUFOProjectileSpeed: 5
   useAI: 0
   shooterType: 0
@@ -940,10 +941,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 13
-  paddingLeft: 0.9
-  paddingRight: 0.9
-  paddingTop: 0.9
-  paddingBottom: 0.9
+  shootingClip: {fileID: 8300000, guid: 955c77f04d46a394eb395360244dd82f, type: 3}
+  shootingVolume: 0.05
+  audioReplayDelay: 0.5
   shooter: {fileID: 5951723354075005390}
 --- !u!50 &8277279648772850806
 Rigidbody2D:
@@ -1025,3 +1025,8 @@ MonoBehaviour:
   health: 50
   isDead: 0
   applyCameraShake: 1
+  UFOExplosion: {fileID: 0}
+  miniUFOExplosion: {fileID: 0}
+  tinyUFOExplosion: {fileID: 0}
+  smallExplosion: {fileID: 0}
+  volume: 0.1

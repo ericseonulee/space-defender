@@ -28,8 +28,6 @@ public class AudioPlayer : MonoBehaviour {
         }
     }
 
-
-
     void Start() {
         AddAudioSource();
     }
@@ -57,9 +55,6 @@ public class AudioPlayer : MonoBehaviour {
         return source.isPlaying;
     }
 
-    public void StopPlaying() {
-        source.Stop();
-    }
     public void PlayShootingEnd() {
         source.time = shootingEndOffset;
         source.Play();

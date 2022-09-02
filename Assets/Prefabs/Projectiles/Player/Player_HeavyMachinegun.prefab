@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  ricochetClip: {fileID: 8300000, guid: a341e75a0f92ca3489c94be0c5322441, type: 3}
-  volume: 0.2
+  ricochetClip: {fileID: 8300000, guid: 10f2ef3e1e393214dac551f846719604, type: 3}
+  volume: 0.15
 --- !u!114 &-551283817520822189
 MonoBehaviour:
   m_ObjectHideFlags: 0
