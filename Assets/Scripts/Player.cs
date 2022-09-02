@@ -5,31 +5,31 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour {
+    [Header("Player")]
     [SerializeField] float moveSpeed = 13f;
+
+    [Header("Shooting Audio")]
+    [SerializeField] AudioClip shootingClip;
+    [SerializeField][Range(0f, 1f)] float shootingVolume = 1f;
+    [SerializeField] public float audioReplayDelay;
+    AudioSource source { get { return GetComponent<AudioSource>(); } }
+    static AudioPlayer instance;
+    static float audioOffset = 0.78547253f;
+    static float shootingEndOffset = 1.23234066f;
 
     Rigidbody2D playerRigidbody;
     Vector2 rawInput;
 
-    [SerializeField] float paddingLeft;
-    [SerializeField] float paddingRight;
-    [SerializeField] float paddingTop;
-    [SerializeField] float paddingBottom;
+    float paddingLeft, paddingRight, paddingTop, paddingBottom = 0.9f;
     Vector2 minBounds;
     Vector2 maxBounds;
 
     [SerializeField] Shooter shooter;
-    AudioPlayer audioPlayer;
-
-    void Awake() {
-        audioPlayer = FindObjectOfType<AudioPlayer>();
-
-        if (audioPlayer == null) {
-            Debug.LogError("audioPlayer is null.");
-        }
-    }
 
     void Start() {
         InitBounds();
+        AddAudioSource();
+
         playerRigidbody = GetComponent<Rigidbody2D>();
 
         if (playerRigidbody == null) {
@@ -39,16 +39,25 @@ public class Player : MonoBehaviour {
 
     void Update() {
         Move();
+        
+        if (source != null) {
+            source.volume = shootingVolume;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log("Shooting");
             StartCoroutine(playAudio());
         }
         else if (Input.GetKeyUp(KeyCode.Space)) {
-            Debug.Log("Shooting End");
             StopCoroutine(playAudio());
-            audioPlayer.PlayShootingEnd();
+            PlayShootingEnd();
         }
+    }
+
+    public void AddAudioSource() {
+        gameObject.AddComponent<AudioSource>();
+        source.clip = shootingClip;
+        source.playOnAwake = false;
+        source.time = audioOffset;
     }
 
     void InitBounds() {
@@ -98,17 +107,39 @@ public class Player : MonoBehaviour {
 
     }
 
+    public void PlayShootingClip() {
+        if (source != null) {
+            source.time = audioOffset;
+
+            if (shootingClip != null) {
+                if (source.isPlaying) {
+                    source.Stop();
+                }
+                source.Play();
+            }
+        }
+    }
+
+    public bool IsPlaying() {
+        return source.isPlaying;
+    }
+
+    public void PlayShootingEnd() {
+        source.time = shootingEndOffset;
+        source.Play();
+    }
+
     IEnumerator playAudio() {
-        if (!audioPlayer.IsPlaying()) {
-            audioPlayer.PlayShootingClip();
+        if (!IsPlaying()) {
+            PlayShootingClip();
             yield return null;
         }
 
         while (shooter.isFiring) {
-            yield return new WaitForSeconds(audioPlayer.audioReplayDelay);
+            yield return new WaitForSeconds(audioReplayDelay);
             if (!shooter.isFiring) break;
 
-            audioPlayer.PlayShootingClip();
+            PlayShootingClip();
         }
     }
 }
