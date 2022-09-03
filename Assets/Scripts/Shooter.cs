@@ -22,7 +22,6 @@ public class Shooter : MonoBehaviour {
     
     [Header("Enemy Variables")]
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
-    [SerializeField] float UFOProjectileSpeed = 20f;
     [SerializeField] bool useAI;
     [SerializeField] ShooterType shooterType;
     float timeToNextProjectile = 4f;
