@@ -158,12 +158,13 @@ public class Shooter : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         if (isOnScreen()) {
+            yield return new WaitForSeconds(0.4f);
             if (health.IsDead()) {
-                shooterAnimator.ResetTrigger("isShooting");
-                yield return null;
+                shooterAnimator.SetBool("isShooting", false);
             }
-            
-            shooterAnimator.SetTrigger("isShooting");
+            else {
+                shooterAnimator.SetBool("isShooting", true);
+            }
         }
     }
 
@@ -171,6 +172,8 @@ public class Shooter : MonoBehaviour {
      * Animation Event will call this function at the end of enemy charging animation.
      */
     public void EnemyReadyToShoot() {
+        if (health.IsDead()) { return; }
+
         GameObject instance = Instantiate(projectilePrefab,
                                           transform.position,
                                           projectilePrefab.transform.rotation);
