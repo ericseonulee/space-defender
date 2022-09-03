@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
     [SerializeField] bool isPlayer;
-    [SerializeField] int health = 50;
+    [SerializeField] int health = 3;
     [SerializeField] bool isDead;
     Animator animator;
 
@@ -15,16 +15,21 @@ public class Health : MonoBehaviour {
     [SerializeField] AudioClip explosionClip;
     [SerializeField][Range(0f, 1f)] float volume = 0.15f;
     AudioSource source { get { return GetComponent<AudioSource>(); } }
+    UIDisplay UI;
 
     void Awake() {
         animator = gameObject.GetComponent<Animator>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
+        UI = FindObjectOfType<UIDisplay>();
 
         if (gameObject.tag == "Enemy" && animator == null) {
             Debug.LogError("Animator is null");
         }
         if (cameraShake == null) {
             Debug.LogError("CameraShake is null.");
+        }
+        if (UI == null) {
+            Debug.LogError("UI is null.");
         }
     }
 
@@ -45,6 +50,10 @@ public class Health : MonoBehaviour {
             TakeDamage(damageDealer.GetDamage());
             ShakeCamera();
             damageDealer.Hit(gameObject);
+
+            if (isPlayer) {
+                UI.UpdateSlider(damageDealer.GetDamage());
+            }
         }
     }
 

@@ -158,7 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b02c850b3dd5e43adc4a2b0b672b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
+  ricochetClip: {fileID: 0}
+  volume: 0.05
 --- !u!114 &3477050263129124648
 MonoBehaviour:
   m_ObjectHideFlags: 0
