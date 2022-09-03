@@ -22,6 +22,7 @@ public class Shooter : MonoBehaviour {
     
     [Header("Enemy Variables")]
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
+    [SerializeField] float UFOProjectileSpeed = 20f;
     [SerializeField] bool useAI;
     [SerializeField] ShooterType shooterType;
     float timeToNextProjectile = 4f;
@@ -82,6 +83,7 @@ public class Shooter : MonoBehaviour {
             case ShooterType.Player:
                 break;
             case ShooterType.UFO:
+                StartCoroutine(EnemyStartCharging());
                 break;
             case ShooterType.MiniUFO:
 
@@ -160,10 +162,10 @@ public class Shooter : MonoBehaviour {
         if (isOnScreen()) {
             yield return new WaitForSeconds(0.4f);
             if (health.IsDead()) {
-                shooterAnimator.SetBool("isShooting", false);
+                shooterAnimator.SetTrigger("isDead");
             }
             else {
-                shooterAnimator.SetBool("isShooting", true);
+                shooterAnimator.SetTrigger("isShooting");
             }
         }
     }
@@ -176,16 +178,26 @@ public class Shooter : MonoBehaviour {
 
         GameObject instance = Instantiate(projectilePrefab,
                                           transform.position,
-                                          projectilePrefab.transform.rotation);
+                                          projectilePrefab.transform.rotation,
+                                          transform);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
 
         if (rb != null) {
             Player player = FindObjectOfType<Player>();
 
-            if (player != null && (shooterType == ShooterType.TinyUFOTypeA || shooterType == ShooterType.TinyUFOTypeB)) {
+            if (player != null) {
                 Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
-                rb.velocity = (player.transform.position - instance.transform.position).normalized * tinyUFOProjectileSpeed;
+                switch (shooterType) {
+                    case ShooterType.UFO:
+                        break;
+                    case ShooterType.TinyUFOTypeA:
+                    case ShooterType.TinyUFOTypeB:
+                        rb.velocity = (playerPos - instance.transform.position).normalized * tinyUFOProjectileSpeed;
+                        break;
+                    default:
+                        break;
+                }
             }
             else {
                 rb.velocity = -transform.up * tinyUFOProjectileSpeed;

@@ -24,7 +24,10 @@ public class Projectile : MonoBehaviour {
     void DestroyOnOutOfBound() {
         Vector2 screenPosition = mainCamera.WorldToScreenPoint(transform.position);
         
-        if (Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x) != transform.position.x ||
+        if (transform.tag == "Enemy Laser") {
+            Destroy(gameObject, 0.5f);
+        }
+        else if (Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x) != transform.position.x ||
             Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y) != transform.position.y) {
 
             Destroy(gameObject);
