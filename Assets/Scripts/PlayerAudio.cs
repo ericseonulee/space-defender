@@ -18,7 +18,6 @@ public class PlayerAudio : MonoBehaviour {
     }
 
     public void PlaySlugDamageClipOneShot() {
-        Debug.Log("Slug damage clip");
         AudioSource.PlayClipAtPoint(slugDamageClip, Camera.main.transform.position, 0.05f);
     }
 }
