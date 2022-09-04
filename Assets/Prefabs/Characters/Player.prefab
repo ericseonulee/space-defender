@@ -228,6 +228,7 @@ MonoBehaviour:
   playerBasicAttackSpeed: 20
   roundSpeed: 0.0625
   tinyUFOProjectileSpeed: 5
+  miniUFOProjectileSpeed: 6
   useAI: 0
   shooterType: 0
   isDead: 0
@@ -875,6 +876,7 @@ GameObject:
   - component: {fileID: 8277279648772850806}
   - component: {fileID: 292142091987364592}
   - component: {fileID: 1126388575468023474}
+  - component: {fileID: 5590414856150221987}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -1026,5 +1028,18 @@ MonoBehaviour:
   health: 3
   isDead: 0
   applyCameraShake: 1
-  explosionClip: {fileID: 0}
-  volume: 0.1
+  defaultMaterial: {fileID: 0}
+--- !u!114 &5590414856150221987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500594777235747844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d657c34efe7b64781cc55ed5699123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slugDamageClip: {fileID: 8300000, guid: 4a40e41d2a0dedc44815f977baf46a02, type: 3}
+  playerVolume: 0.2
