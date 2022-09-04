@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreKeeper : MonoBehaviour {
     NumberRenderer numberRendering;
     public int score;
+    public int maxNumber = 99999999;
 
     void Start() {
         numberRendering = GetComponent<NumberRenderer>();
@@ -19,7 +20,8 @@ public class ScoreKeeper : MonoBehaviour {
         return score;
     }
 
-    public void ModityScore(int value) {
+    public void ModifyScore(int value) {
+        if (score >= maxNumber) { return; }
         score += value;
         Mathf.Clamp(score, 0, int.MaxValue);
         numberRendering.RenderNumber(score);

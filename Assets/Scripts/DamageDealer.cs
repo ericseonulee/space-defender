@@ -61,7 +61,7 @@ public class DamageDealer : MonoBehaviour {
                                                             transform.position.y
                                                                 + Random.Range(midPointYStart, midPointYEnd + Mathf.Epsilon));
             }
-            scoreKeeper.ModityScore(100);
+            scoreKeeper.ModifyScore(100);
             RandomBasicAttackHitAnimator();
             source.PlayOneShot(ricochetClip, volume);
         }

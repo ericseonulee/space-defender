@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class NumberRenderer : MonoBehaviour {
+    public enum Align {
+        LeftAlign,
+        RightAlign
+    }
 
+    [SerializeField] public Align align = Align.LeftAlign;
 
     public List<SpriteNumber> numbers;
 
     public GameObject genaricNumber;
-
 
     public void RenderNumber(int aNum) {
         if (aNum < 0) {
@@ -28,14 +32,29 @@ public class NumberRenderer : MonoBehaviour {
 
         }
         //Check to see if there is enough numbers to render the incoming number
-        for (int i = 0; i < length; i++) {
-            if (length > numbers.Count) {
-                GameObject temp = Instantiate(genaricNumber, numbers[numbers.Count - 1].gameObject.transform.position + new Vector3(numbers[numbers.Count - 1].render.bounds.size.x, 0, 0), Quaternion.identity) as GameObject;
-                temp.transform.parent = this.gameObject.transform;
-                numbers.Add(temp.GetComponent<SpriteNumber>());
+        if (align == Align.LeftAlign) {
+            for (int i = 0; i < length; i++) {
+                if (length > numbers.Count) {
+                    GameObject temp = Instantiate(genaricNumber, numbers[numbers.Count - 1].gameObject.transform.position + new Vector3(numbers[numbers.Count - 1].render.bounds.size.x, 0, 0), Quaternion.identity);
+                    temp.transform.parent = gameObject.transform;
+                    numbers.Add(temp.GetComponent<SpriteNumber>());
+                }
             }
+        }
+        else if (align == Align.RightAlign) {
+            for (int i = 0; i < length; i++) {
+                if (length > numbers.Count) {
+                    float previousNumberSize = numbers[numbers.Count - 1].render.bounds.size.x;
 
+                    GameObject temp = Instantiate(genaricNumber, numbers[numbers.Count - 1].gameObject.transform.position, Quaternion.identity);
 
+                    gameObject.transform.position = new Vector3(gameObject.transform.position.x - previousNumberSize,
+                                                                gameObject.transform.position.y,
+                                                                gameObject.transform.position.z);
+                    temp.transform.parent = gameObject.transform;
+                    numbers.Add(temp.GetComponent<SpriteNumber>());
+                }
+            }
         }
         //Remove any unused numbers
         if (length < numbers.Count) {
@@ -51,7 +70,5 @@ public class NumberRenderer : MonoBehaviour {
         for (int i = 0; i < numbers.Count; i++) {
             numbers[i].SetNumber(int.Parse(strNum[i].ToString()));
         }
-
-
     }
 }
