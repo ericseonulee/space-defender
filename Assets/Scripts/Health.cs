@@ -32,7 +32,6 @@ public class Health : MonoBehaviour {
         UI = FindObjectOfType<UIDisplay>();
 
         if (gameObject.tag == "Enemy") {
-            Debug.Log("is Prefab? : " + (gameObject.gameObject.scene.name == null));
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
             if (animator == null) {
