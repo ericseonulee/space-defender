@@ -57,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 54ab232185d2cbb44bbbbe91999010ac, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   applyCameraShake: 0
   explosionClip: {fileID: 8300000, guid: 43a53aec0b19e4f4a9e8179b729264f5, type: 3}
   volume: 0.15
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!50 &-9201998305531404606
 Rigidbody2D:
   serializedVersion: 4
@@ -300,7 +301,6 @@ MonoBehaviour:
   playerBasicAttackSpeed: 20
   roundSpeed: 0.0625
   tinyUFOProjectileSpeed: 5
-  UFOProjectileSpeed: 20
   useAI: 1
   shooterType: 1
   isDead: 0

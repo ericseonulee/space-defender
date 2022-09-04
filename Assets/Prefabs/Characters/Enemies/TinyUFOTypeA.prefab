@@ -58,7 +58,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 533f0883f9a590847b4fa90b6e1f640e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -134,11 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78a6fec109bccb34e9efefdab15c1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
   health: 40
   isDead: 0
   applyCameraShake: 0
   explosionClip: {fileID: 8300000, guid: 998de226ad0d45744b5818d6a4fdb3e6, type: 3}
   volume: 0.15
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!50 &6938752267314939603
 Rigidbody2D:
   serializedVersion: 4
