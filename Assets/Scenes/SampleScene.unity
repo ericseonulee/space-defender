@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1018224246682379568, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
+      propertyPath: miniUFOProjectileSpeed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7584773441055271752, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -178,10 +182,6 @@ PrefabInstance:
     - target: {fileID: 7584773441055271753, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
       propertyPath: m_Name
       value: MiniUFO
-      objectReference: {fileID: 0}
-    - target: {fileID: 7584773441055271753, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -1782,7 +1782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5748746492787224656, guid: f61981599086b394bbfa4c81bab1a4ff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5748746492787224662, guid: f61981599086b394bbfa4c81bab1a4ff, type: 3}
       propertyPath: m_RootOrder

@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 9209192486268170952}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7584773441055271798
 SpriteRenderer:
@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8612291951032713141}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.07, y: 2.77, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +275,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -293,13 +293,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6aa446ad9976464396f8a3ef47c3609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1803998601684192500, guid: 21b6693690e503b4f8e52f52a8379835, type: 3}
+  projectilePrefab: {fileID: 4213879366363797851, guid: b709e100826bcdc4d91c5b2a2f7c64d7, type: 3}
   playerFireRate: 0.2
   playerBasicAttackSpeed: 20
   roundSpeed: 0.0625
   tinyUFOProjectileSpeed: 5
+  miniUFOProjectileSpeed: 5
   useAI: 1
-  shooterType: 4
+  shooterType: 2
   isDead: 0
   isFiring: 0
 --- !u!95 &8990386132521179776
@@ -312,7 +313,7 @@ Animator:
   m_GameObject: {fileID: 8612291951032713141}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 065f7c494e146dc4196a0928c9ee2779, type: 2}
+  m_Controller: {fileID: 9100000, guid: 43237bd4b41ad6949bb60fe5609f5172, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

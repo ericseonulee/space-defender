@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour {
         }
         else if (Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x) != transform.position.x ||
             Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y) != transform.position.y) {
-
+            Debug.Log("here");
             Destroy(gameObject);
         }
     }

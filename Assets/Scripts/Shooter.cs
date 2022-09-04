@@ -22,6 +22,7 @@ public class Shooter : MonoBehaviour {
     
     [Header("Enemy Variables")]
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
+    [SerializeField] float miniUFOProjectileSpeed = 6f;
     [SerializeField] bool useAI;
     [SerializeField] ShooterType shooterType;
     float timeToNextProjectile = 4f;
@@ -85,7 +86,7 @@ public class Shooter : MonoBehaviour {
                 StartCoroutine(EnemyStartCharging());
                 break;
             case ShooterType.MiniUFO:
-
+                StartCoroutine(EnemyStartCharging());
                 break;
             case ShooterType.TinyUFOTypeA:
                 StartCoroutine(EnemyStartCharging());
@@ -174,24 +175,31 @@ public class Shooter : MonoBehaviour {
      */
     public void EnemyReadyToShoot() {
         if (health.IsDead()) { return; }
-
+        Player player = FindObjectOfType<Player>();
         GameObject instance = Instantiate(projectilePrefab,
                                           transform.position,
                                           projectilePrefab.transform.rotation);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
 
         if (rb != null) {
-            Player player = FindObjectOfType<Player>();
-
             if (player != null) {
                 Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+                Vector3 direction = (playerPos - instance.transform.position).normalized;
 
                 switch (shooterType) {
-                    case ShooterType.UFO:
+                    case ShooterType.MiniUFO:
+                        float a = playerPos.x - instance.transform.position.x;
+                        float b = playerPos.y - instance.transform.position.y;
+                        float angle = Mathf.Atan2(b, a) * Mathf.Rad2Deg;
+
+                        instance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+                        rb.velocity = direction * miniUFOProjectileSpeed;
                         break;
                     case ShooterType.TinyUFOTypeA:
                     case ShooterType.TinyUFOTypeB:
-                        rb.velocity = (playerPos - instance.transform.position).normalized * tinyUFOProjectileSpeed;
+                        rb.velocity = direction * tinyUFOProjectileSpeed;
+                        break;
+                    case ShooterType.UFO:
                         break;
                     default:
                         break;

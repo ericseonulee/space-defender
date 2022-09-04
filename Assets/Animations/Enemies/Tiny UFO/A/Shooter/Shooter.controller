@@ -130,7 +130,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shooter A
+  m_Name: Shooter
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isShooting
