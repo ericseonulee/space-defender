@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6345062444765071121}
   m_Layer: 8
   m_Name: UFOBeam
-  m_TagString: Untagged
+  m_TagString: Enemy Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,8 +127,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.13333334, y: 17.966667}
-    newSize: {x: 0.13333334, y: 17.966667}
+    oldSize: {x: 0.13333334, y: 2.3333333}
+    newSize: {x: 0.13333334, y: 2.3333333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
