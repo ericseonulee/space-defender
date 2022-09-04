@@ -24,7 +24,7 @@ public class Health : MonoBehaviour {
     Material tintMaterial;
     Color materialBaseColor;
     Color materialTintColor;
-    float tintFadeSpeed = 3f;
+    float tintFadeSpeed = 12f;
 
     void Awake() {
         animator = gameObject.GetComponent<Animator>();
