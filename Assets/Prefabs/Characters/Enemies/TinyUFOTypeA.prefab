@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8380481456935941649}
   - component: {fileID: 6938752267314939603}
   - component: {fileID: 7347588069970190900}
+  - component: {fileID: 7784612445786634235}
   m_Layer: 8
   m_Name: TinyUFOTypeA
   m_TagString: Enemy
@@ -138,9 +139,9 @@ MonoBehaviour:
   health: 40
   isDead: 0
   applyCameraShake: 0
-  explosionClip: {fileID: 8300000, guid: 998de226ad0d45744b5818d6a4fdb3e6, type: 3}
-  volume: 0.15
   defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  slugDamagedClip: {fileID: 0}
+  slugVolume: 0.15
 --- !u!50 &6938752267314939603
 Rigidbody2D:
   serializedVersion: 4
@@ -213,6 +214,20 @@ PolygonCollider2D:
       - {x: 0.13357562, y: 0.13478185}
       - {x: 0.002129361, y: 0.19964054}
   m_UseDelaunayMesh: 0
+--- !u!114 &7784612445786634235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6165280982809382707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8902ae7d346d3f04ea94168cd1367011, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionClip: {fileID: 8300000, guid: 998de226ad0d45744b5818d6a4fdb3e6, type: 3}
+  enemyVolume: 0.2
 --- !u!1 &8544618681266771572
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +331,7 @@ MonoBehaviour:
   playerBasicAttackSpeed: 20
   roundSpeed: 0.0625
   tinyUFOProjectileSpeed: 5
+  miniUFOProjectileSpeed: 6
   useAI: 1
   shooterType: 3
   isDead: 0

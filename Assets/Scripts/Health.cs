@@ -12,10 +12,8 @@ public class Health : MonoBehaviour {
     [SerializeField] bool applyCameraShake;
     CameraShake cameraShake;
 
-    [Header("Enemy")]
-    [SerializeField] AudioClip explosionClip;
-    [SerializeField][Range(0f, 1f)] float volume = 0.15f;
-    AudioSource source { get { return GetComponent<AudioSource>(); } }
+    PlayerAudio playerAudio;
+    EnemyAudio enemyAudio;
     UIDisplay UI;
 
     [Header("Health Damage Tint")]
@@ -31,8 +29,21 @@ public class Health : MonoBehaviour {
         cameraShake = Camera.main.GetComponent<CameraShake>();
         UI = FindObjectOfType<UIDisplay>();
 
+
+        if (gameObject.tag == "Player") {
+            playerAudio = gameObject.GetComponent<PlayerAudio>();
+
+            if (playerAudio == null) {
+                Debug.LogError("PlayerAudio is null.");
+            }
+        }
         if (gameObject.tag == "Enemy") {
+            enemyAudio = gameObject.GetComponent<EnemyAudio>();
             spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+            if (enemyAudio == null) {
+                Debug.LogError("enemyAudio is null");
+            }
 
             if (animator == null) {
                 Debug.LogError("Animator is null");
@@ -44,6 +55,7 @@ public class Health : MonoBehaviour {
 
             tintMaterial = spriteRenderer.material;
         }
+
         
         if (cameraShake == null) {
             Debug.LogError("CameraShake is null.");
@@ -54,15 +66,7 @@ public class Health : MonoBehaviour {
         }
     }
 
-    void Start() {
-        AddAudioSource();
-    }
-
     void Update() {
-        if (source != null) {
-            source.volume = volume;
-        }
-
         if (transform.tag == "Enemy" && (materialTintColor.a > 0 || materialBaseColor != Color.white)) {
             ResetColor(tintFadeSpeed);
         }
@@ -82,25 +86,25 @@ public class Health : MonoBehaviour {
         }
     }
 
-    void AddAudioSource() {
-        gameObject.AddComponent<AudioSource>();
-        source.playOnAwake = false;
-    }
-
     void TakeDamage(int damageDealt) {
         health -= damageDealt;
         materialBaseColor = new Color(1, 1, 0.5f, 1);
         materialTintColor = new Color(1, 0, 0, 1f);
 
+        if (gameObject.tag == "Player") {
+            playerAudio.PlaySlugDamageClipOneShot();
+        }
+
         if (health <= 0) {
             Collider2D collider = GetComponent<Collider2D>();
 
             collider.enabled = false;
+
             if (gameObject.tag == "Enemy") {
                 ResetMaterial();
                 animator.SetTrigger("OnDeath");
                 isDead = true;
-                source.PlayOneShot(explosionClip, volume);
+                enemyAudio.PlayExplosionClipOneShot();
             }
             Destroy(gameObject, 1f);
         }

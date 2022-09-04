@@ -7,7 +7,7 @@ public class DamageDealer : MonoBehaviour {
 
     [Header("Ricochet")]
     [SerializeField] AudioClip ricochetClip;
-    [SerializeField][Range(0f, 1f)] float volume = 0.15f;
+    [SerializeField][Range(0f, 1f)] float volume = 0.21f;
     AudioSource source { get { return GetComponent<AudioSource>(); } }
     ScoreKeeper scoreKeeper;
 
