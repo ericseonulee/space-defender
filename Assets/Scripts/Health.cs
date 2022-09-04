@@ -16,18 +16,19 @@ public class Health : MonoBehaviour {
     EnemyAudio enemyAudio;
     UIDisplay UI;
 
-    [Header("Health Damage Tint")]
-    SpriteRenderer spriteRenderer;
-    public Material defaultMaterial;
-    Material tintMaterial;
-    Color materialBaseColor;
-    Color materialTintColor;
-    float tintFadeSpeed = 12f;
+    Tint tint;
+    //Tint[] tints;
 
     void Awake() {
         animator = gameObject.GetComponent<Animator>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
         UI = FindObjectOfType<UIDisplay>();
+        if (isPlayer) {
+            //tints = gameObject.GetComponentsInChildren<Tint>();
+        }
+        else {
+            tint = gameObject.GetComponent<Tint>();
+        }
 
 
         if (gameObject.tag == "Player") {
@@ -39,7 +40,6 @@ public class Health : MonoBehaviour {
         }
         if (gameObject.tag == "Enemy") {
             enemyAudio = gameObject.GetComponent<EnemyAudio>();
-            spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
             if (enemyAudio == null) {
                 Debug.LogError("enemyAudio is null");
@@ -48,14 +48,7 @@ public class Health : MonoBehaviour {
             if (animator == null) {
                 Debug.LogError("Animator is null");
             }
-
-            if (spriteRenderer == null) {
-                Debug.LogError("SpriteRenderer is null.");
-            }
-
-            tintMaterial = spriteRenderer.material;
         }
-
         
         if (cameraShake == null) {
             Debug.LogError("CameraShake is null.");
@@ -64,11 +57,9 @@ public class Health : MonoBehaviour {
         if (UI == null) {
             Debug.LogError("UI is null.");
         }
-    }
 
-    void Update() {
-        if (transform.tag == "Enemy" && (materialTintColor.a > 0 || materialBaseColor != Color.white)) {
-            ResetColor(tintFadeSpeed);
+        if (gameObject.tag == "enemy" && tint == null) {
+            Debug.LogError("Tint is null.");
         }
     }
 
@@ -88,11 +79,15 @@ public class Health : MonoBehaviour {
 
     void TakeDamage(int damageDealt) {
         health -= damageDealt;
-        materialBaseColor = new Color(1, 1, 0.5f, 1);
-        materialTintColor = new Color(1, 0, 0, 1f);
 
-        if (gameObject.tag == "Player") {
+        if (isPlayer) {
             playerAudio.PlaySlugDamageClipOneShot();
+            //foreach (Tint t in tints) {
+            //    t.SetTintColor(Tint.playerBaseColor, Tint.playerBaseColor);
+            //}
+        }
+        else if (gameObject.tag == "Enemy") {
+            tint.SetTintColor(Tint.enemyBaseColor, Tint.enemyTintColor);
         }
 
         if (health <= 0) {
@@ -101,17 +96,12 @@ public class Health : MonoBehaviour {
             collider.enabled = false;
 
             if (gameObject.tag == "Enemy") {
-                ResetMaterial();
+                tint.ResetMaterial();
                 animator.SetTrigger("OnDeath");
                 isDead = true;
                 enemyAudio.PlayExplosionClipOneShot();
             }
             Destroy(gameObject, 1f);
-        }
-        else {
-            if (gameObject.tag == "Enemy") {
-                SetTintColor(materialBaseColor, materialTintColor);
-            }
         }
     }
 
@@ -127,29 +117,5 @@ public class Health : MonoBehaviour {
 
     public int GetHealth() {
         return health;
-    }
-
-    void ResetColor(float fadeSpeed = 0) {
-        materialBaseColor.r = Mathf.Clamp01(materialBaseColor.r + tintFadeSpeed * Time.deltaTime);
-        materialBaseColor.g = Mathf.Clamp01(materialBaseColor.g + tintFadeSpeed * Time.deltaTime);
-        materialBaseColor.b = Mathf.Clamp01(materialBaseColor.b + tintFadeSpeed * Time.deltaTime);
-        materialBaseColor.a = Mathf.Clamp01(materialBaseColor.a + tintFadeSpeed * Time.deltaTime);
-        materialTintColor.a = Mathf.Clamp01(materialTintColor.a - tintFadeSpeed * Time.deltaTime);
-
-        tintMaterial.SetColor("_Color", materialBaseColor);
-        tintMaterial.SetColor("_Tint", materialTintColor);
-    }
-
-    void SetTintColor(Color baseColor, Color tintColor) {
-        materialBaseColor = baseColor;
-        materialTintColor = tintColor;
-
-        tintMaterial.SetColor("_Color", materialBaseColor);
-        tintMaterial.SetColor("_Tint", materialTintColor);
-    }
-
-    void ResetMaterial() {
-        ResetColor();
-        spriteRenderer.material = defaultMaterial;
     }
 }

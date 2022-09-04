@@ -944,7 +944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 13
   shootingClip: {fileID: 8300000, guid: 955c77f04d46a394eb395360244dd82f, type: 3}
-  shootingVolume: 0.05
+  shootingVolume: 0.1
   audioReplayDelay: 0.5
   shooter: {fileID: 5951723354075005390}
 --- !u!50 &8277279648772850806
@@ -967,7 +967,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &292142091987364592
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1028,7 +1028,6 @@ MonoBehaviour:
   health: 3
   isDead: 0
   applyCameraShake: 1
-  defaultMaterial: {fileID: 0}
 --- !u!114 &5590414856150221987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1042,4 +1041,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slugDamageClip: {fileID: 8300000, guid: 4a40e41d2a0dedc44815f977baf46a02, type: 3}
-  playerVolume: 0.2

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -6770447349866732926}
   - component: {fileID: 2224021079057826264}
   - component: {fileID: 9015710797676546807}
+  - component: {fileID: 9092777410298811183}
   m_Layer: 8
   m_Name: MiniUFO
   m_TagString: Enemy
@@ -126,9 +127,6 @@ MonoBehaviour:
   health: 50
   isDead: 0
   applyCameraShake: 0
-  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  slugDamagedClip: {fileID: 0}
-  slugVolume: 0.15
 --- !u!50 &-6770447349866732926
 Rigidbody2D:
   serializedVersion: 4
@@ -210,6 +208,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionClip: {fileID: 8300000, guid: d17c2abe55b8c8c48b8d35fbe52be21d, type: 3}
   enemyVolume: 0.3
+--- !u!114 &9092777410298811183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584773441055271753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31e40426847b354faf1b8df180a20c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &8612291951032713141
 GameObject:
   m_ObjectHideFlags: 0

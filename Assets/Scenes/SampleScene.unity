@@ -133,11 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8156657779841247409, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
       propertyPath: health
-      value: 9999
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1018224246682379568, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1018224246682379568, guid: 164ccd882b45ba045b754bba0abc2928, type: 3}
       propertyPath: miniUFOProjectileSpeed
@@ -1640,17 +1640,21 @@ PrefabInstance:
       propertyPath: defaultMaterial
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3756398751959468076, guid: 738130d31b093d34f811025b9648bad8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6916354786877703980, guid: 738130d31b093d34f811025b9648bad8, type: 3}
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6916354786877703980, guid: 738130d31b093d34f811025b9648bad8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.31
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 6916354786877703980, guid: 738130d31b093d34f811025b9648bad8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 6916354786877703980, guid: 738130d31b093d34f811025b9648bad8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1719,10 +1723,6 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1126388575468023474, guid: cfe72c68bac821240ba012fdaaaaa7b5, type: 3}
-      propertyPath: health
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5253529102540780240, guid: cfe72c68bac821240ba012fdaaaaa7b5, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1770,14 +1770,6 @@ PrefabInstance:
     - target: {fileID: 7500594777235747844, guid: cfe72c68bac821240ba012fdaaaaa7b5, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7898413419860244219, guid: cfe72c68bac821240ba012fdaaaaa7b5, type: 3}
-      propertyPath: moveSpeed
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8277279648772850806, guid: cfe72c68bac821240ba012fdaaaaa7b5, type: 3}
-      propertyPath: m_BodyType
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

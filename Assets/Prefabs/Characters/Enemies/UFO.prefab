@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -9201998305531404606}
   - component: {fileID: 6941629994344071035}
   - component: {fileID: -3738327140992551645}
+  - component: {fileID: -2963464935992795725}
   m_Layer: 8
   m_Name: UFO
   m_TagString: Enemy
@@ -126,9 +127,6 @@ MonoBehaviour:
   health: 50
   isDead: 0
   applyCameraShake: 0
-  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  slugDamagedClip: {fileID: 0}
-  slugVolume: 0.15
 --- !u!50 &-9201998305531404606
 Rigidbody2D:
   serializedVersion: 4
@@ -213,6 +211,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionClip: {fileID: 8300000, guid: 43a53aec0b19e4f4a9e8179b729264f5, type: 3}
   enemyVolume: 0.3
+--- !u!114 &-2963464935992795725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6916354786877703981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31e40426847b354faf1b8df180a20c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &7137380266873921551
 GameObject:
   m_ObjectHideFlags: 0

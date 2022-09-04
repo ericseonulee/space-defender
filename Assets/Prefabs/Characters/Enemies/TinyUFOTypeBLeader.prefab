@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 6904397112221041176}
   - component: {fileID: 1806662133226262443}
   - component: {fileID: -5517460215743638534}
+  - component: {fileID: 23909566214180864}
   m_Layer: 8
   m_Name: TinyUFOTypeBLeader
   m_TagString: Enemy
@@ -254,9 +255,6 @@ MonoBehaviour:
   health: 50
   isDead: 0
   applyCameraShake: 0
-  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  slugDamagedClip: {fileID: 0}
-  slugVolume: 0.15
 --- !u!50 &6904397112221041176
 Rigidbody2D:
   serializedVersion: 4
@@ -335,3 +333,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionClip: {fileID: 8300000, guid: 998de226ad0d45744b5818d6a4fdb3e6, type: 3}
   enemyVolume: 0.2
+--- !u!114 &23909566214180864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5297537470636440714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31e40426847b354faf1b8df180a20c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
