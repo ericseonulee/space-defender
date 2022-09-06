@@ -13,7 +13,6 @@ public class Player : MonoBehaviour {
     [SerializeField][Range(0f, 1f)] float shootingVolume = 0.15f;
     [SerializeField] public float audioReplayDelay;
     AudioSource source { get { return GetComponent<AudioSource>(); } }
-    static AudioPlayer instance;
     static float audioOffset = 0.78547253f;
     static float shootingEndOffset = 1.23234066f;
 
