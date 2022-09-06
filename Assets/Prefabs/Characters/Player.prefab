@@ -872,9 +872,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5253529102540780240}
   - component: {fileID: 166245266200736391}
-  - component: {fileID: 7898413419860244219}
   - component: {fileID: 8277279648772850806}
   - component: {fileID: 292142091987364592}
+  - component: {fileID: 7898413419860244219}
   - component: {fileID: 1126388575468023474}
   - component: {fileID: 5590414856150221987}
   m_Layer: 7
@@ -898,7 +898,7 @@ Transform:
   m_Children:
   - {fileID: 3576303267337611273}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &166245266200736391
 MonoBehaviour:
@@ -930,23 +930,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7898413419860244219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7500594777235747844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bde3276438b5744d8ccd0508bc285c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 13
-  shootingClip: {fileID: 8300000, guid: 955c77f04d46a394eb395360244dd82f, type: 3}
-  shootingVolume: 0.1
-  audioReplayDelay: 0.5
-  shooter: {fileID: 5951723354075005390}
 --- !u!50 &8277279648772850806
 Rigidbody2D:
   serializedVersion: 4
@@ -1012,6 +995,23 @@ PolygonCollider2D:
       - {x: 0.62956256, y: -0.2966865}
       - {x: 0.63210565, y: 0.09281555}
   m_UseDelaunayMesh: 0
+--- !u!114 &7898413419860244219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7500594777235747844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bde3276438b5744d8ccd0508bc285c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 13
+  shootingClip: {fileID: 8300000, guid: 955c77f04d46a394eb395360244dd82f, type: 3}
+  shootingVolume: 0.1
+  audioReplayDelay: 0.5
+  shooter: {fileID: 5951723354075005390}
 --- !u!114 &1126388575468023474
 MonoBehaviour:
   m_ObjectHideFlags: 0

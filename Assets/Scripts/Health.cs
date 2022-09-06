@@ -15,14 +15,21 @@ public class Health : MonoBehaviour {
     PlayerAudio playerAudio;
     EnemyAudio enemyAudio;
     UIDisplay UI;
+    GameManager gameManager;
 
     Tint tint;
     //Tint[] tints;
 
     void Awake() {
+        gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         animator = gameObject.GetComponent<Animator>();
         cameraShake = Camera.main.GetComponent<CameraShake>();
         UI = FindObjectOfType<UIDisplay>();
+
+        if (gameManager == null) {
+            Debug.LogError("GameManage is NULL.");
+        }
+
         if (isPlayer) {
             //tints = gameObject.GetComponentsInChildren<Tint>();
         }
@@ -95,7 +102,10 @@ public class Health : MonoBehaviour {
 
             collider.enabled = false;
 
-            if (gameObject.tag == "Enemy") {
+            if (gameObject.tag == "Player") {
+                gameManager.GameOver();
+            }
+            else if (gameObject.tag == "Enemy") {
                 tint.ResetMaterial();
                 animator.SetTrigger("OnDeath");
                 isDead = true;

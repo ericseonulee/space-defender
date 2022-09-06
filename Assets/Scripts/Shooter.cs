@@ -36,8 +36,10 @@ public class Shooter : MonoBehaviour {
     Coroutine firingCoroutine;
     Animator shooterAnimator;
     Health health;
+    GameObject projectiles;
 
     void Start() {
+        projectiles = GameObject.Find("Projectiles");
         health = gameObject.transform.parent.gameObject.tag == "Enemy" ? gameObject.transform.parent.GetComponent<Health>() :
                                                                         gameObject.transform.parent.parent.GetComponent<Health>();
         shooterAnimator = transform.GetComponent<Animator>();
@@ -47,6 +49,9 @@ public class Shooter : MonoBehaviour {
         }
         if (health == null) {
             Debug.LogError("Health is null");
+        }
+        if (projectiles == null) {
+            Debug.LogError("GameObject \'Projectiles\' is null");
         }
 
         if (useAI) {
@@ -146,7 +151,8 @@ public class Shooter : MonoBehaviour {
     void InstantiatePlayerBasicAttack(Vector3 firePosition) {
         GameObject instance = Instantiate(projectilePrefab,
                                               firePosition,
-                                              projectilePrefab.transform.rotation);
+                                              projectilePrefab.transform.rotation,
+                                              projectiles.transform);
 
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
 
@@ -178,7 +184,8 @@ public class Shooter : MonoBehaviour {
         Player player = FindObjectOfType<Player>();
         GameObject instance = Instantiate(projectilePrefab,
                                           transform.position,
-                                          projectilePrefab.transform.rotation);
+                                          projectilePrefab.transform.rotation,
+                                          projectiles.transform);
         Rigidbody2D rb = instance.GetComponent<Rigidbody2D>();
 
         if (rb != null) {
