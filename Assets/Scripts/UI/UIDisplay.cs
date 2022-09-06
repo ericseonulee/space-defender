@@ -13,9 +13,7 @@ public class UIDisplay : MonoBehaviour {
     }
 
     public void UpdateSlider(int damage) {
-        if (playerHealth.GetHealth() > 0) {
-            StartCoroutine(SliderAnimation(damage));
-        }
+        StartCoroutine(SliderAnimation(damage));
         
         if (playerHealth.GetHealth() == 1) {
             StartCoroutine(LowHealthWarning());
