@@ -4,10 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
-    [SerializeField]
-    private bool _isGameOver;
-    [SerializeField]
-    private GameObject _pauseMenuPanel;
+    public bool isGameOver;
+    [SerializeField] private GameObject _pauseMenuPanel;
 
     AudioSource source;
     public AudioSource audioPlayer;
@@ -23,7 +21,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (_isGameOver && Input.GetKeyDown(KeyCode.R)) {
+        if (isGameOver && Input.GetKeyDown(KeyCode.R)) {
             RestartGame();
         }
 
@@ -39,7 +37,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver() {
-        _isGameOver = true;
+        isGameOver = true;
         StartCoroutine(GameOverRoutine());
     }
 

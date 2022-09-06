@@ -19,7 +19,9 @@ public class Shooter : MonoBehaviour {
     [SerializeField] float playerFireRate = 0.01f;
     [SerializeField] float playerBasicAttackSpeed = 20f;
     [SerializeField] float roundSpeed = 0.0625f;
-    
+    private int playerBasicAttackOffsetIndex = 0;
+
+
     [Header("Enemy Variables")]
     [SerializeField] float tinyUFOProjectileSpeed = 5f;
     [SerializeField] float miniUFOProjectileSpeed = 6f;
@@ -29,21 +31,27 @@ public class Shooter : MonoBehaviour {
     public bool isDead;
 
     public bool isFiring;
-    private int playerBasicAttackOffsetIndex = 0;
+
     Vector2 minBounds;
     Vector2 maxBounds;
     float padding = 0.9f;
+
     Coroutine firingCoroutine;
     Animator shooterAnimator;
     Health health;
     GameObject projectiles;
+    GameManager gameManager;
 
     void Start() {
+        gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
         projectiles = GameObject.Find("Projectiles");
         health = gameObject.transform.parent.gameObject.tag == "Enemy" ? gameObject.transform.parent.GetComponent<Health>() :
                                                                         gameObject.transform.parent.parent.GetComponent<Health>();
         shooterAnimator = transform.GetComponent<Animator>();
 
+        if (gameManager == null) {
+            Debug.LogError("GameManage is NULL.");
+        }
         if (shooterAnimator == null) {
             Debug.LogError("Shooter Animator is null.");
         }
@@ -84,6 +92,8 @@ public class Shooter : MonoBehaviour {
     }
 
     void EnemyFire() {
+        if (gameManager.isGameOver) { return; }
+
         switch (shooterType) {
             case ShooterType.Player:
                 break;
