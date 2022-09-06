@@ -7,6 +7,7 @@ public class Health : MonoBehaviour {
     [SerializeField] bool isPlayer;
     [SerializeField] int health = 3;
     [SerializeField] bool isDead;
+    bool isInvinsible;
     Animator animator;
 
     [SerializeField] bool applyCameraShake;
@@ -74,12 +75,17 @@ public class Health : MonoBehaviour {
         DamageDealer damageDealer = collision.GetComponent<DamageDealer>();
 
         if (damageDealer != null) {
-            TakeDamage(damageDealer.GetDamage());
             damageDealer.Hit(gameObject);
 
+            if (isInvinsible) { return; }
+
+            TakeDamage(damageDealer.GetDamage());
+
             if (isPlayer) {
+                isInvinsible = true;
                 ShakeCamera();
                 UI.UpdateSlider(damageDealer.GetDamage());
+                Invoke("ResetVulnerability", 1f);
             }
         }
     }
@@ -127,5 +133,9 @@ public class Health : MonoBehaviour {
 
     public int GetHealth() {
         return health;
+    }
+
+    void ResetVulnerability() {
+        isInvinsible = false;
     }
 }
