@@ -41,7 +41,7 @@ public class Booster : MonoBehaviour {
 
         residueAnimator1InitialPos = boosterResidue1.transform.position;
         residueAnimator2InitialPos = boosterResidue2.transform.position;
-        Invoke("BoosterInit", 5f);
+        Invoke("BoosterInit", 4f);
     }
 
     void Update() {
@@ -68,6 +68,7 @@ public class Booster : MonoBehaviour {
 
     void BoosterInit() {
         boosterAnimator.SetTrigger("boosterInit");
+        player.SetPlayerMobility(true);
         boosterInit = true;
 
         

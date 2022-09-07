@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour {
     [Header("Player")]
     [SerializeField] float moveSpeed = 13f;
+    private bool canMove;
 
     [Header("Shooting Audio")]
     [SerializeField] AudioClip shootingClip;
@@ -75,6 +76,8 @@ public class Player : MonoBehaviour {
     }
 
     void Move() {
+        if (!canMove) { return; }
+
         Vector2 playerVelocity = new Vector2(rawInput.x * moveSpeed, rawInput.y * moveSpeed);// * Time.deltaTime;
         playerRigidbody.velocity = playerVelocity;
 
@@ -84,6 +87,11 @@ public class Player : MonoBehaviour {
         newPos.y = Mathf.Clamp(transform.position.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
 
         transform.position = newPos;
+    }
+
+    public bool SetPlayerMobility(bool boo) {
+        canMove = boo;
+        return canMove;
     }
 
     /**

@@ -8,11 +8,6 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] bool isLooping;
     WaveConfigSO currentWave;
 
-
-    void Start() {
-        StartCoroutine(SpawnEnemyWaves());
-    }
-
     public WaveConfigSO GetCurrentWave() {
         return currentWave;
     }
@@ -22,6 +17,10 @@ public class EnemySpawner : MonoBehaviour {
         newScale.x *= -1;
         
         return newScale;
+    }
+
+    public void StartWave() {
+        StartCoroutine(SpawnEnemyWaves());
     }
 
     IEnumerator SpawnEnemyWaves() {
