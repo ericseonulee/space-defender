@@ -636,6 +636,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716386423}
   m_CullTransparentMesh: 1
+--- !u!82 &729943468 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8725401319630034433, guid: 95d28af572397b845b90c8c087f3e950, type: 3}
+  m_PrefabInstance: {fileID: 2067473660627135129}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &764581472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,7 +1427,7 @@ PrefabInstance:
     - target: {fileID: 1000937582997204151, guid: bbfa73f2bf1369b478099aa1474783ba, type: 3}
       propertyPath: audioPlayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 729943468}
     - target: {fileID: 1000937582997204151, guid: bbfa73f2bf1369b478099aa1474783ba, type: 3}
       propertyPath: projectiles
       value: 
@@ -1850,6 +1855,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8942534065344014362, guid: 30b0e66be2667ba4cb684c491244876c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8942534065344014363, guid: 30b0e66be2667ba4cb684c491244876c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 153eca65e216e8a46998f029529e2413, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 30b0e66be2667ba4cb684c491244876c, type: 3}
