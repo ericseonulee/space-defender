@@ -19,7 +19,10 @@ public class Player : MonoBehaviour {
     Rigidbody2D playerRigidbody;
     Vector2 rawInput;
 
-    float paddingLeft, paddingRight, paddingTop, paddingBottom = 0.9f;
+    float paddingLeft = 0.9f;
+    float paddingRight = 0.9f;
+    float paddingTop = 0.9f;
+    float paddingBottom = 0.9f;
     Vector2 minBounds;
     Vector2 maxBounds;
 
