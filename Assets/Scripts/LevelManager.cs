@@ -37,11 +37,13 @@ public class LevelManager : MonoBehaviour {
         float speed = 0f;
         float fixedSpeed = 5f;
         float acceleration = 90f;
+        float waitTime = 0.3f;
+        float timer = 0;
 
-        source.PlayOneShot(astroSlugInitBoosterClip, 0.15f);
-        while (player.transform.position.y < -6) {
+        while (timer < waitTime) {
             speed += acceleration * Time.deltaTime;
             playerRigidbody.velocity = new Vector2(0, speed);
+            timer += Time.deltaTime;
 
             yield return null;
         }
