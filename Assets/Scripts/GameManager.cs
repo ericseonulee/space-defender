@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour {
             RestartGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) && _pauseMenuPanel != null) {
             if (_pauseMenuPanel.activeSelf) {
                 ResumeGame();
             }
