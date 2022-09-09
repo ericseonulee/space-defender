@@ -28,6 +28,8 @@ public class PathFinderSingle : MonoBehaviour {
     }
 
     IEnumerator FollowPath() {
+        Shooter shooter = this.GetComponentInChildren<Shooter>();
+
         while (waypointIndex < waypoints.Count) {
             Vector3 targetPosition = waypoints[waypointIndex].position;
             float delta = enemySpawnerSingle.GetCurrentWave().GetMoveSpeed() * Time.deltaTime;
@@ -36,7 +38,14 @@ public class PathFinderSingle : MonoBehaviour {
 
             if (transform.position == targetPosition) {
                 waypointIndex++;
-                yield return new WaitForSeconds(0.75f);
+
+                if (waypointIndex >= 1 && Random.Range(0, 1) == 1) {
+                    shooter.EnemyShootOnce();
+                    yield return new WaitForSeconds(1.5f);
+                }
+                else {
+                    yield return new WaitForSeconds(0.75f);
+                }
             }
             yield return new WaitForEndOfFrame();
         }
@@ -45,7 +54,6 @@ public class PathFinderSingle : MonoBehaviour {
             Vector3 targetPosition = new Vector3(player.transform.position.x + horizontalRandomOffset,
                                          transform.position.y + verticalRandomOffset,
                                          transform.position.z);
-            Shooter shooter = this.GetComponentInChildren<Shooter>();
 
             while (transform.position != targetPosition) {
                 float delta = enemySpawnerSingle.GetCurrentWave().GetMoveSpeed() * Time.deltaTime;

@@ -1032,10 +1032,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner_1: {fileID: 835075907}
+  waveSingle_0: {fileID: 11400000, guid: 08ae2308d72c11642b8605bc89288df9, type: 2}
+  waveSingle_1: {fileID: 11400000, guid: f8b290a413e1f7943a3fa3f5d8f8af0b, type: 2}
+  waveSingle_2: {fileID: 11400000, guid: 0f6da8e34ba07cd4fade797185aeb6ba, type: 2}
   enemySpawner_2: {fileID: 1789130616}
-  enemySpawner_3: {fileID: 0}
-  enemySpawner_4: {fileID: 0}
-  enemySpawner_5: {fileID: 0}
   astroSlugInitBoosterClip: {fileID: 8300000, guid: bb54e4ad36aa1ce4ea3ff44c52c640be, type: 3}
 --- !u!4 &1451631444
 Transform:

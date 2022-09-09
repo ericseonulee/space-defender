@@ -20,12 +20,17 @@ public class EnemySpawnerSingle : MonoBehaviour {
     }
 
     public void StartWave() {
+        currentWave = waveConfig;
+        StartCoroutine(SpawnEnemyWaves());
+    }
+
+    public void StartWave(WaveConfigSingle waveSingle) {
+        currentWave = waveSingle;
         StartCoroutine(SpawnEnemyWaves());
     }
 
     IEnumerator SpawnEnemyWaves() {
         do {
-            currentWave = waveConfig;
             GameObject enemyInstantiated = Instantiate(currentWave.GetEnemyPrefab(),
                                                     currentWave.GetStartingWaypoint().position,
                                                     Quaternion.identity,

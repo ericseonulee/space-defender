@@ -6,7 +6,7 @@ using UnityEngine;
 public class WaveConfigSingle : ScriptableObject {
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] Transform pathPrefab;
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField] float moveSpeed = 20f;
 
     [SerializeField] bool isFlipped = false;
 

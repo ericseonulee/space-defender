@@ -7,7 +7,14 @@ public class LevelManager : MonoBehaviour {
     Player player;
     Rigidbody2D playerRigidbody;
 
+    [Header("Enemy Spawner 1")]
     public EnemySpawnerSingle enemySpawner_1;
+    public WaveConfigSingle waveSingle_0;
+    public WaveConfigSingle waveSingle_1;
+    public WaveConfigSingle waveSingle_2;
+
+
+    [Header("Enemy Spawner 2")]
     public EnemySpawner enemySpawner_2;
     
     AudioSource source { get { return GetComponent<AudioSource>(); } }
@@ -64,9 +71,27 @@ public class LevelManager : MonoBehaviour {
 
         playerRigidbody.velocity = Vector3.zero;
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4.5f);
 
-        enemySpawner_1.StartWave();
-        //enemySpawner_2.StartWave();
+        StartWaves();
+    }
+
+    void StartWaves() {
+        StartCoroutine(LevelOneWaves());
+    }
+
+    IEnumerator LevelOneWaves() {
+        enemySpawner_1.StartWave(waveSingle_0);
+        yield return new WaitForSeconds(3f);
+        enemySpawner_1.StartWave(waveSingle_1);
+        yield return new WaitForSeconds(0.5f);
+        enemySpawner_1.StartWave(waveSingle_2);
+        yield return StartCoroutine(LevelTwoWaves());
+    }
+
+    IEnumerator LevelTwoWaves() {
+        yield return new WaitForSeconds(3);
+        enemySpawner_2.StartWave();
+        yield return new WaitForEndOfFrame();
     }
 }
