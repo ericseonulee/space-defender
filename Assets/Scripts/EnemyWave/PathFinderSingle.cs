@@ -7,9 +7,11 @@ using System.Linq;
 public class PathFinderSingle : MonoBehaviour {
     EnemySpawnerSingle enemySpawnerSingle;
     List<Transform> waypoints;
+    Player player;
+    Health health;
+
     int waypointIndex = 0;
     int followPlayerCount = 2;
-    Player player;
     float horizontalRandomOffset;
     float verticalRandomOffset;
 
@@ -17,14 +19,25 @@ public class PathFinderSingle : MonoBehaviour {
         player = GameObject.Find("Player").GetComponent<Player>();
         horizontalRandomOffset = Random.Range(-0.5f, 0.5f);
         verticalRandomOffset = Random.Range(-2f, 2f);
+        health = gameObject.GetComponent<Health>();
 
         if (player == null) {
             Debug.Log("Cannot find Player.");
+        }
+
+        if (health == null) {
+            Debug.Log("Cannot find Health");
         }
     }
 
     void Start() {
         StartCoroutine(FollowPath());
+    }
+
+    void Update() {
+        if (health.IsDead()) {
+            StopAllCoroutines();
+        }
     }
 
     IEnumerator FollowPath() {
@@ -39,37 +52,33 @@ public class PathFinderSingle : MonoBehaviour {
             if (transform.position == targetPosition) {
                 waypointIndex++;
 
-                if (waypointIndex >= 1 && Random.Range(0, 1) == 1) {
+                if (waypointIndex >= 1 && Random.Range(0, 3) > 3) {
                     shooter.EnemyShootOnce();
-                    yield return new WaitForSeconds(1.5f);
+                    yield return new WaitForSeconds(1f);
                 }
                 else {
-                    yield return new WaitForSeconds(0.75f);
+                    yield return new WaitForSeconds(0.5f);
                 }
             }
             yield return new WaitForEndOfFrame();
         }
 
-        while(followPlayerCount-- > 0) {
-            Vector3 targetPosition = new Vector3(player.transform.position.x + horizontalRandomOffset,
-                                         transform.position.y + verticalRandomOffset,
-                                         transform.position.z);
+        Vector3 playerPosition = new Vector3(player.transform.position.x + horizontalRandomOffset,
+                                        transform.position.y + verticalRandomOffset,
+                                        transform.position.z);
 
-            while (transform.position != targetPosition) {
-                float delta = enemySpawnerSingle.GetCurrentWave().GetMoveSpeed() * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, targetPosition, delta);
+        while (transform.position != playerPosition) {
+            float delta = enemySpawnerSingle.GetCurrentWave().GetMoveSpeed() * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, playerPosition, delta);
 
-                if (transform.position == targetPosition) {
-                    shooter.EnemyShootOnce();
-                    yield return new WaitForSeconds(1.75f);
-                }
-                yield return new WaitForEndOfFrame();
+            if (transform.position == playerPosition) {
+                shooter.EnemyShootOnce();
+                yield return new WaitForSeconds(1.75f);
             }
+            yield return new WaitForEndOfFrame();
         }
 
         Vector3 closestPoint = transform.position * 2 + GetClosestBorder();
-
-        Debug.Log(closestPoint);
 
         while (transform.position != closestPoint) {    
             float delta = enemySpawnerSingle.GetCurrentWave().GetMoveSpeed() * Time.deltaTime;

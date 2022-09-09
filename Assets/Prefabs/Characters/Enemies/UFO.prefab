@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  health: 50
+  health: 70
   isDead: 0
   applyCameraShake: 0
 --- !u!50 &-9201998305531404606
