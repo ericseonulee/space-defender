@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
-    [SerializeField] List<WaveConfigSO> waveConfigs;
+    [SerializeField] List<WaveConfig> waveConfigs;
     [SerializeField] float timeBetweenWaves = 4f;
     [SerializeField] bool isLooping;
-    WaveConfigSO currentWave;
+    WaveConfig currentWave;
 
-    public WaveConfigSO GetCurrentWave() {
+    public WaveConfig GetCurrentWave() {
         return currentWave;
     }
 
@@ -25,7 +25,7 @@ public class EnemySpawner : MonoBehaviour {
 
     IEnumerator SpawnEnemyWaves() {
         do {
-            foreach (WaveConfigSO wave in waveConfigs) {
+            foreach (WaveConfig wave in waveConfigs) {
                 currentWave = wave;
 
                 for (int i = 0; i < currentWave.GetEnemyCount(); i++) {
@@ -33,6 +33,14 @@ public class EnemySpawner : MonoBehaviour {
                                                             currentWave.GetStartingWaypoint().position,
                                                             Quaternion.identity,
                                                             transform);
+
+                    PathFinder pathFinder = enemyInstantiated.GetComponent<PathFinder>();
+
+                    if (pathFinder == null) { Debug.LogError("PathFinder is not assigned."); }
+                    else {
+                        pathFinder.SetEnemySpawner(this);
+                        pathFinder.SetWayPoints(GetCurrentWave().GetWaypoints());
+                    }
                     if (currentWave.GetIsFlipped()) {
                         enemyInstantiated.transform.localScale = flipLocalScale(enemyInstantiated);
                     }

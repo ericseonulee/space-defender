@@ -7,19 +7,17 @@ public class LevelManager : MonoBehaviour {
     Player player;
     Rigidbody2D playerRigidbody;
 
-    EnemySpawner enemySpawner;
+    public EnemySpawnerSingle enemySpawner_1;
+    public EnemySpawner enemySpawner_2;
+    
     AudioSource source { get { return GetComponent<AudioSource>(); } }
     public AudioClip astroSlugInitBoosterClip;
 
     void Awake () {
         player = FindObjectOfType<Player>();
-        enemySpawner = FindObjectOfType<EnemySpawner>();
 
         if (player == null) {
             Debug.LogError("player is null.");
-        }
-        if (enemySpawner == null) {
-            Debug.LogError("EnemySpawner is null.");
         }
 
         playerRigidbody = player.GetComponent<Rigidbody2D>();
@@ -68,6 +66,7 @@ public class LevelManager : MonoBehaviour {
 
         yield return new WaitForSeconds(5f);
 
-        enemySpawner.StartWave();
+        enemySpawner_1.StartWave();
+        //enemySpawner_2.StartWave();
     }
 }

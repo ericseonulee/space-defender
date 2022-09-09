@@ -346,7 +346,7 @@ MonoBehaviour:
   useAI: 1
   shooterType: 3
   isDead: 0
-  isFiring: 0
+  isFiring: 1
 --- !u!95 &127368746316950399
 Animator:
   serializedVersion: 4

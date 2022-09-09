@@ -62,9 +62,12 @@ public class Shooter : MonoBehaviour {
             Debug.LogError("GameObject \'Projectiles\' is null");
         }
 
+
         if (useAI) {
-            isFiring = true;
             InitBounds();
+        }
+
+        if (shooterType == ShooterType.TinyUFOTypeA || shooterType == ShooterType.TinyUFOTypeB) {    
             InvokeRepeating("EnemyFire", 0f, timeToNextProjectile);
         }
     }
@@ -224,6 +227,17 @@ public class Shooter : MonoBehaviour {
             }
             else {
                 rb.velocity = -transform.up * tinyUFOProjectileSpeed;
+            }
+        }
+    }
+
+    public void EnemyShootOnce() {
+        if (isOnScreen()) {
+            if (health.IsDead()) {
+                shooterAnimator.SetTrigger("isDead");
+            }
+            else {
+                shooterAnimator.SetTrigger("isShooting");
             }
         }
     }
