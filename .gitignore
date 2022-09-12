@@ -25,6 +25,7 @@
 
 # assets
 /[Aa]ssets/Sprites/
+/[Aa]ssets/Audio/
 
 # Visual Studio cache directory
 .vs/
